@@ -1,49 +1,62 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :last_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :last_name, :class => 'text_field' %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label :first_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :first_name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :street, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :street, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :postal_code, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :postal_code, :class => 'number_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :city, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :city, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :phone_landline, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :phone_landline, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :phone_mobile, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :phone_mobile, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :date_of_birth, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :date_of_birth, :class => 'date_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :email, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :email, :class => 'text_field' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :street %><br />
-    <%= f.text_field :street %>
-  </div>
-  <div class="field">
-    <%= f.label :postal_code %><br />
-    <%= f.number_field :postal_code %>
-  </div>
-  <div class="field">
-    <%= f.label :phone_landline %><br />
-    <%= f.text_field :phone_landline %>
-  </div>
-  <div class="field">
-    <%= f.label :phone_mobile %><br />
-    <%= f.text_field :phone_mobile %>
-  </div>
-  <div class="field">
-    <%= f.label :date_of_birth %><br />
-    <%= f.date_select :date_of_birth %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                users_path, :class => 'btn' %>
   </div>
 <% end %>

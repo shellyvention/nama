@@ -13,8 +13,9 @@
 #  email          :string(255)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  city           :string(255)
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :date_of_birth, :email, :first_name, :last_name, :phone_landline, :phone_mobile, :postal_code, :street
+  attr_accessible :date_of_birth, :email, :first_name, :last_name, :phone_landline, :phone_mobile, :postal_code, :street, :city
 end
