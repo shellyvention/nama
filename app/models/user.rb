@@ -17,5 +17,30 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :date_of_birth, :email, :first_name, :last_name, :phone_landline, :phone_mobile, :postal_code, :street, :city
+	attr_accessible :date_of_birth, :email, :first_name, :last_name,
+		:phone_landline, :phone_mobile, :postal_code, :street, :city
+
+	before_save { |user| user.email = email.downcase }
+
+	validates :first_name, :last_name, :street, :city,
+		presence: true, length: { maximum: 40 }
+	validates :postal_code, presence: true, length: { minimum: 4 }
+	validates :date_of_birth, presence: true
+
+	# Breaking down the email regex:
+	#
+	#  /				start of regex
+	#  \A				match start of a string
+	#  [\w+\-.]+		at least one word character, plus, hyphen, or dot
+	#  @				literal "at sign"
+	#  [a-z\d\-.]+		at least one letter, digit, hyphen, or dot
+	#  \.				literal dot
+	#  [a-z]+			at least one letter
+	#  \z				match end of a string
+	#  /				end of regex
+	#  i				case insensitive
+	#
+	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+	validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
+		uniqueness: { case_sensitive: false }
 end
