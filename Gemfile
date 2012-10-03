@@ -6,8 +6,6 @@ gem 'rails', '3.2.8'
 
 gem 'annotate', '2.5.0', group: :development
 
-gem "bootstrap-sass", "~> 2.1.0.0"
-
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -24,6 +22,8 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+
+  gem 'twitter-bootstrap-rails'
 end
 
 gem 'jquery-rails'
