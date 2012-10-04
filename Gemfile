@@ -1,29 +1,27 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.8'
+gem 'sqlite3', '~> 1.3.6'
 
-# Additionally added gems
+gem 'annotate', '~> 2.5.0', group: :development
 
-gem 'annotate', '2.5.0', group: :development
+group :development, :test do
+	gem 'rspec-rails', '~> 2.11.0'
+	gem 'webrat', '~> 0.7.3'
+	gem 'database_cleaner', '~> 0.8.0'
+	gem 'selenium-webdriver', '~> 2.25.0'
+end
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+group :test do
+	gem 'cucumber-rails', '~> 1.3.0'
+end
 
-gem 'sqlite3'
-
-
-# Gems used only for assets and not required
-# in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+	gem 'sass-rails',   '~> 3.2.3'
+	gem 'coffee-rails', '~> 3.2.1'
+	gem 'uglifier', '>= 1.0.3'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
-  gem 'uglifier', '>= 1.0.3'
-
-  gem 'twitter-bootstrap-rails'
+	gem 'twitter-bootstrap-rails'
 end
 
 gem 'jquery-rails'
