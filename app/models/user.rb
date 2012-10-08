@@ -20,6 +20,9 @@ class User < ActiveRecord::Base
 	attr_accessible :date_of_birth, :email, :first_name, :last_name,
 		:phone_landline, :phone_mobile, :postal_code, :street, :city
 
+	has_many :group_members
+	has_many :groups, through: :group_members
+
 	before_save { |user| user.email = email.downcase }
 
 	validates :first_name, :last_name, :street, :city,
