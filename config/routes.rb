@@ -1,5 +1,6 @@
 Nama::Application.routes.draw do
   resources :users
+  resources :groups
 
   root to: 'static_pages#home'
 
