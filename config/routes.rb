@@ -1,6 +1,14 @@
 Nama::Application.routes.draw do
   resources :users
+
   resources :groups
+  match '/groups/:id/members/:user_id',
+    :to => 'groups#add_membership', :via => :post,
+    :as => 'group_memberships'
+
+  match '/groups/:id/members/:user_id',
+    :to => 'groups#remove_membership', :via => :delete,
+    :as => 'group_memberships'
 
   root to: 'static_pages#home'
 

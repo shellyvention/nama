@@ -1,0 +1,34 @@
+<div class="span5">
+	<h4>Members:</h4>
+	<table class="table table-striped">
+		<tbody>
+		<% @group.users.each do |member| %>
+			<tr>
+				<td><%= member.last_name %></td>
+				<td><%= member.first_name %></td>
+				<td>
+					<%= link_to "remove", group_memberships_path(@group, member),
+						:class => 'btn btn-mini btn-danger',
+						:remote => true, :method => :delete %>
+				</td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+</div>
+
+<div class="span4" id="non-member-list">
+	<h4>New Member:</h4>
+	<table class="table table-striped">
+		<tbody>
+		<% @non_members.each do |member| %>
+			<tr>
+				<td><%= member.last_name %></td>
+				<td><%= member.first_name %></td>
+				<td><%= link_to "Add", group_memberships_path(@group, member),
+				:class => 'btn btn-mini', :remote => true, :method => :post %></td>
+			</tr>
+		<% end %>
+		</tbody>
+	</table>
+</div>

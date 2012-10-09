@@ -14,6 +14,7 @@ class GroupsController < ApplicationController
   # GET /groups/1.json
   def show
     @group = Group.find(params[:id])
+	@non_members = User.all - @group.users
 
     respond_to do |format|
       format.html # show.html.erb
@@ -78,6 +79,32 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to groups_url }
       format.json { head :no_content }
+    end
+  end
+
+  def add_membership
+    @group = Group.find(params[:id])
+    user = User.find(params[:user_id])
+	@group.users << user
+
+	@non_members = User.all - @group.users
+
+    respond_to do |format|
+      format.html { redirect_to @group, notice: 'Group was successfully updated.' }
+	  format.js { render action: "members" }
+    end
+  end
+
+  def remove_membership
+    @group = Group.find(params[:id])
+    user = User.find(params[:user_id])
+	@group.users.delete user
+
+	@non_members = User.all - @group.users
+
+    respond_to do |format|
+      format.html { redirect_to @group, notice: 'Group was successfully updated.' }
+	  format.js { render action: "members" }
     end
   end
 end
