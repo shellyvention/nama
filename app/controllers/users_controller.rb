@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 
     if @user.save
-	  flash[:error] = "User was successfully created."
+	  flash[:success] = "User was successfully created."
       redirect_to users_url
     else
       render 'new'
