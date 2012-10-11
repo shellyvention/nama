@@ -14,10 +14,10 @@
 ActiveRecord::Schema.define(:version => 20121008174120) do
 
   create_table "group_members", :force => true do |t|
-    t.integer  "group_id"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "group_id",   :default => 0, :null => false
+    t.integer  "user_id",    :default => 0, :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   add_index "group_members", ["group_id"], :name => "index_group_members_on_group_id"
