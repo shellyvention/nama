@@ -6,22 +6,23 @@ gem 'sqlite3', '~> 1.3.6'
 gem 'annotate', '~> 2.5.0', group: :development
 
 group :development, :test do
-	gem 'rspec-rails', '~> 2.11.0'
-	gem 'webrat', '~> 0.7.3'
-	gem 'database_cleaner', '~> 0.8.0'
-	gem 'selenium-webdriver', '~> 2.25.0'
+  gem 'rspec-rails', '~> 2.11.0'
+  gem 'webrat', '~> 0.7.3'
+  gem 'database_cleaner', '~> 0.8.0'
+  gem 'selenium-webdriver', '~> 2.25.0'
 end
 
 group :test do
-	gem 'cucumber-rails', '~> 1.3.0'
+  gem 'cucumber-rails', '~> 1.3.0'
+  gem 'simplecov', require: false
 end
 
 group :assets do
-	gem 'sass-rails',   '~> 3.2.3'
-	gem 'coffee-rails', '~> 3.2.1'
-	gem 'uglifier', '>= 1.0.3'
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier', '>= 1.0.3'
 
-	gem 'twitter-bootstrap-rails'
+  gem 'twitter-bootstrap-rails'
 end
 
 gem 'jquery-rails'
