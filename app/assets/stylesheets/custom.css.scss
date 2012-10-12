@@ -1,4 +1,3 @@
-
 /* mixins, variables, etc. */
 
 $gray: #808080;
@@ -35,4 +34,21 @@ footer {
 
 #non-member-list {
 	float: right;
+}
+
+/* Styles for jQuery form validation plugin */
+
+label.valid {
+  width: 24px;
+  height: 24px;
+  background: url(valid.png) center center no-repeat !important;
+  display: inline-block;
+  text-indent: -9999px;
+}
+
+label.error {
+  font-weight: bold;
+  color: red;
+  padding: 2px 8px;
+  margin-top: 2px;
 }

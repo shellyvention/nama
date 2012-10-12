@@ -63,3 +63,25 @@
                 users_path, :class => 'btn' %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+
+	$('form.form-horizontal').validate({
+	 rules: {
+	   'user[last_name]': {
+		maxlength: 40,
+        required: true
+	   },
+	 },
+      highlight: function(label) {
+      $(label).closest('.control-group').addClass('error').removeClass('success');
+	 },
+     success: function(label) {
+       label
+         .text('OK!').addClass('valid')
+         .closest('.control-group').addClass('success').removeClass('error');
+	 }
+    });
+  });
+</script>
