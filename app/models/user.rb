@@ -26,8 +26,8 @@ class User < ActiveRecord::Base
 	before_save { |user| user.email = email.downcase }
 
 	validates :first_name, :last_name, :street, :city,
-		presence: true, length: { maximum: 40 }
-	validates :postal_code, presence: true, length: { minimum: 4 }
+		presence: true, length: { minimum: 2, maximum: 40 }
+	validates :postal_code, presence: true, length: { minimum: 4, maximum: 10 }
 	validates :date_of_birth, presence: true
 
 	# Breaking down the email regex:

@@ -67,21 +67,49 @@
 <script type="text/javascript">
   $(document).ready(function() {
 
-	$('form.form-horizontal').validate({
-	 rules: {
-	   'user[last_name]': {
-		maxlength: 40,
-        required: true
-	   },
-	 },
+    $('form.form-horizontal').validate(
+    {
+      rules: {
+        'user[last_name]': {
+          minlength: 2,
+          maxlength: 40,
+          required: true
+        },
+        'user[first_name]': {
+          minlength: 2,
+          maxlength: 40,
+          required: true
+        },
+        'user[street]': {
+          minlength: 2,
+          maxlength: 40,
+          required: true
+        },
+        'user[city]': {
+          minlength: 2,
+          maxlength: 40,
+          required: true
+        },
+        'user[postal_code]': {
+          minlength: 4,
+		  maxlength: 10,
+          required: true
+        },
+        'user[email]': {
+          email: true,
+          required: true
+        },
+      },
+
       highlight: function(label) {
-      $(label).closest('.control-group').addClass('error').removeClass('success');
-	 },
-     success: function(label) {
-       label
-         .text('OK!').addClass('valid')
-         .closest('.control-group').addClass('success').removeClass('error');
-	 }
+        $(label).closest('.control-group').addClass('error').removeClass('success');
+      },
+
+      success: function(label) {
+        label
+          .text('OK!').addClass('valid')
+          .closest('.control-group').addClass('success').removeClass('error');
+      }
     });
   });
 </script>
