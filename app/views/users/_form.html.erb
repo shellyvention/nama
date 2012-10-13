@@ -44,10 +44,7 @@
   <div class="control-group">
     <%= f.label :date_of_birth, :class => 'control-label' %>
     <div class="controls">
-      <%= f.date_select :date_of_birth,
-		start_year: Time.now.year - 100,
-		end_year: Time.now.year,
-		:class => 'date_select' %>
+      <%= f.text_field :date_of_birth, 'data-behaviour' => 'datepicker' %>
     </div>
   </div>
   <div class="control-group">
@@ -95,6 +92,9 @@
 		  maxlength: 10,
           required: true
         },
+        'user[date_of_birth]': {
+          required: true
+        },
         'user[email]': {
           email: true,
           required: true
@@ -110,6 +110,16 @@
           .text('OK!').addClass('valid')
           .closest('.control-group').addClass('success').removeClass('error');
       }
+    });
+  });
+
+  $(document).on("focus", "[data-behaviour~='datepicker']", function(e) {
+    $(this).datepicker(
+    {
+	  "startView": "decade",
+      "format": "dd.mm.yyyy",
+      "weekStart": 1,
+      "autoclose": true
     });
   });
 </script>
