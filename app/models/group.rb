@@ -14,5 +14,5 @@ class Group < ActiveRecord::Base
 	has_many :group_members
 	has_many :users, through: :group_members
 
-	validates :name, presence: true
+	validates :name, presence: true, length: { minimum: 2, maximum: 40 }
 end
