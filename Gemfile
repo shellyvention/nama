@@ -15,6 +15,7 @@ end
 group :test do
   gem 'cucumber-rails', '~> 1.3.0'
   gem 'simplecov', require: false
+  gem 'factory_girl_rails', '~> 4.1.0'
 end
 
 group :assets do
