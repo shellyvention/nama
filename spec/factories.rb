@@ -8,4 +8,8 @@ FactoryGirl.define do
     date_of_birth	{ 40.years.ago }
     email			"peter@muster.ch"
   end
+
+  factory :group do
+    name            "Herren 1"
+  end
 end
