@@ -116,16 +116,69 @@ describe UsersController do
 
     context "when the user fails to update" do
       it "assigns @user" do
-        user.stub(:save).and_return(false)
+        user.stub(:update_attributes).and_return(false)
         put :update, id: user
         assigns[:user].should eq(user)
       end
 
-#      it "renders the edit template" do
-#        user.stub(:save).and_return(false)
-#        put :update, id: user
-#        response.should render_template("edit")
-#      end
+      it "renders the edit template" do
+        User.stub(:find).with(user.id.to_s).and_return(user)
+        user.stub(:update_attributes).and_return(false)
+        put :update, id: user
+        response.should render_template("edit")
+      end
+    end
+  end
+
+  describe "destroy" do
+    let(:user) { FactoryGirl.create(:user) }
+
+    it "located the requested @user" do
+      put :update, id: user
+      assigns(:user).should eq(user)
+    end
+
+    context "when the user updates successfully" do
+      it "sets a flash[:success] message" do
+        post :update, id: user
+        flash[:success].should eq("User was successfully updated.")
+      end
+
+      it "redirects to the Users index" do
+        post :update, id: user
+        response.should redirect_to(users_url)
+      end
+    end
+
+    context "when the user fails to update" do
+      it "assigns @user" do
+        user.stub(:update_attributes).and_return(false)
+        put :update, id: user
+        assigns[:user].should eq(user)
+      end
+
+      it "renders the edit template" do
+        User.stub(:find).with(user.id.to_s).and_return(user)
+        user.stub(:update_attributes).and_return(false)
+        put :update, id: user
+        response.should render_template("edit")
+      end
+    end
+  end
+
+  describe "destroy" do
+    let(:user) { FactoryGirl.create(:user) }
+
+    it "deletes the user" do
+      User.stub(:find).with(user.id.to_s).and_return(user)
+      expect {
+        delete :destroy, id: user
+      }.to change(User,:count).by(-1)
+    end
+
+    it "redirects to the Users index" do
+      delete :destroy, id: user
+      response.should redirect_to(users_url)
     end
   end
 end
