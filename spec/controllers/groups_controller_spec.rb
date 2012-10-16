@@ -129,4 +129,34 @@ describe GroupsController do
       response.should redirect_to(groups_url)
     end
   end
+
+  describe "add_membership" do
+    let(:group) { FactoryGirl.create(:group) }
+    let(:user) { FactoryGirl.create(:user) }
+
+    it "adds a member" do
+      expect {
+        xhr :post, :add_membership, id: group, user_id: user.id
+      }.to change(GroupMember, :count).by(1)
+
+      response.should render_template("members")
+    end
+  end
+
+  describe "remove_membership" do
+    let(:group) { FactoryGirl.create(:group) }
+    let(:user) { FactoryGirl.create(:user) }
+
+    before do
+      group.users << user
+    end
+
+    it "removes a member" do
+      expect {
+        xhr :delete, :remove_membership, id: group, user_id: user.id
+      }.to change(GroupMember, :count).by(-1)
+
+      response.should render_template("members")
+    end
+  end
 end
