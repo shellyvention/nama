@@ -3,7 +3,10 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.8'
 gem 'sqlite3', '~> 1.3.6'
 
-gem 'annotate', '~> 2.5.0', group: :development
+group :development do
+  gem 'annotate', '~> 2.5.0'
+  gem 'rails-erd'
+end
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.11.0'
