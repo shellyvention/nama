@@ -10,6 +10,8 @@ Nama::Application.routes.draw do
     :to => 'groups#remove_membership', :via => :delete,
     :as => 'group_memberships'
 
+  resources :events
+
   root to: 'static_pages#home'
 
   match '/about', to: 'static_pages#about'
