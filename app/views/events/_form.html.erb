@@ -8,7 +8,8 @@
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_area :description, :class => 'text_area' %>
+      <%= f.text_area :description, :cols => 30, :rows => 4,
+        :style => 'resize: none', :class => 'text_area' %>
     </div>
   </div>
   <div class="control-group">
@@ -20,7 +21,7 @@
   <div class="control-group">
     <%= f.label :date, :class => 'control-label' %>
     <div class="controls">
-      <%= f.date_select :date, :class => 'date_select' %>
+      <%= f.text_field :date, 'data-behaviour' => 'datepicker' %>
     </div>
   </div>
 
@@ -30,3 +31,44 @@
                 events_path, :class => 'btn' %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+
+    $('form.form-horizontal').validate(
+    {
+      rules: {
+        'event[name]': {
+          minlength: 2,
+          maxlength: 100,
+          required: true
+        },
+        'event[user_id]': {
+          required: true
+        },
+        'event[date]': {
+          required: true
+        },
+      },
+
+      highlight: function(label) {
+        $(label).closest('.control-group').addClass('error').removeClass('success');
+      },
+
+      success: function(label) {
+        label
+          .text('OK!').addClass('valid')
+          .closest('.control-group').addClass('success').removeClass('error');
+      }
+    });
+  });
+
+  $(document).on("focus", "[data-behaviour~='datepicker']", function(e) {
+    $(this).datepicker(
+    {
+      "format": "dd.mm.yyyy",
+      "weekStart": 1,
+      "autoclose": true
+    });
+  });
+</script>
