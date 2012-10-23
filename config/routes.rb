@@ -1,4 +1,6 @@
 Nama::Application.routes.draw do
+  resources :timeslots
+
   resources :users
 
   resources :groups
