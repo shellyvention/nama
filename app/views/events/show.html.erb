@@ -14,8 +14,11 @@
         <li><%= @event.user.last_name %></li>
       </ul>
     </div>
-    <div class="span8" id="timeslot-div">
-      here goes the rendered partial for timeslots
+    <div class="span4" id="timeslot-div">
+      <%= render :partial => "timeslots/index", :locals => { :timeslots => @event.timeslots } %>
+    </div>
+    <div class="span4">
+      <%= render :partial => "timeslots/new" %>
     </div>
   </div>
 </div>

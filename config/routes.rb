@@ -1,5 +1,4 @@
 Nama::Application.routes.draw do
-  resources :timeslots
 
   resources :users
 
@@ -12,7 +11,9 @@ Nama::Application.routes.draw do
     :to => 'groups#remove_membership', :via => :delete,
     :as => 'group_memberships'
 
-  resources :events
+  resources :events do
+    resources :timeslots
+  end
 
   root to: 'static_pages#home'
 

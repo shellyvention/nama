@@ -18,5 +18,4 @@ class Timeslot < ActiveRecord::Base
   validates :from, presence: true
   validates :to, presence: true
   validates :event_id, presence: true
-  
 end

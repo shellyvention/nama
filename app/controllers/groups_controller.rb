@@ -1,26 +1,22 @@
 class GroupsController < ApplicationController
-  # GET /groups
+
   def index
     @groups = Group.all
   end
 
-  # GET /groups/1
   def show
     @group = Group.find(params[:id])
 	@non_members = User.all - @group.users
   end
 
-  # GET /groups/new
   def new
     @group = Group.new
   end
 
-  # GET /groups/1/edit
   def edit
     @group = Group.find(params[:id])
   end
 
-  # POST /groups
   def create
     @group = Group.new(params[:group])
 
@@ -32,7 +28,6 @@ class GroupsController < ApplicationController
     end
   end
 
-  # PUT /groups/1
   def update
     @group = Group.find(params[:id])
 
@@ -44,7 +39,6 @@ class GroupsController < ApplicationController
     end
   end
 
-  # DELETE /groups/1
   def destroy
     @group = Group.find(params[:id])
 

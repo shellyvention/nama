@@ -1,0 +1,22 @@
+<div class="page-header">
+  <h1><%=t '.title', :default => t('helpers.titles.new', :model => Timeslot.model_name.human,
+      :default => "New #{Timeslot.model_name.human}") %></h1>
+</div>
+
+<%= form_for [@event, Timeslot.new], :html => { :class => 'form-horizontal' }, :remote => true do |f| %>
+  <div class="control-group">
+    <%= f.label :from, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.time_select :from, :class => 'time_select' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :to, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.time_select :to, :class => 'time_select' %>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary', :remote => true %>
+  </div>
+<% end %>

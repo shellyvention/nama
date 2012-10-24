@@ -1,0 +1,2 @@
+jQuery('#timeslot-div').html('<%= escape_javascript(
+  render :partial => 'timeslots/index', :locals => { :timeslots => @event.timeslots}) %>');
