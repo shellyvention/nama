@@ -16,9 +16,9 @@
         <td><%= timeslot.from %></td>
         <td><%= timeslot.to %></td>
         <td>
-          <%= link_to "destroy", event_timeslot_path(@event, timeslot),
-              :class => 'btn btn-mini btn-danger',
-              :remote => true, :method => :delete %>
+          <%= link_to ll('.remove'), event_timeslot_path(@event, timeslot),
+                :remote => true, :method => :delete,
+                :class => 'btn btn-mini btn-danger' %>
         </td>
       </tr>
     <% end %>

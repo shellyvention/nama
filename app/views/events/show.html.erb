@@ -24,15 +24,9 @@
 </div>
 
 <div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-      events_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-      edit_event_path(@event), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-      event_path(@event),
-        :method => 'delete',
-        :data => { :confirm => t('.confirm',
-        :default => t("helpers.links.confirm",
-        :default => 'Are you sure?')) },
-      :class => 'btn btn-danger' %>
+  <%= link_to ll('.back'), events_path, :class => 'btn'  %>
+  <%= link_to ll('.edit'), edit_event_path(@event), :class => 'btn' %>
+  <%= link_to ll('.destroy'), event_path(@event), :method => 'delete',
+        :data => { :confirm => ll('.confirm'), :default => 'Are you sure?' },
+        :class => 'btn btn-danger' %>
 </div>
