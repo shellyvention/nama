@@ -7,16 +7,33 @@
   <div class="control-group">
     <%= f.label :from, :class => 'control-label' %>
     <div class="controls">
-      <%= f.time_select :from, :class => 'time_select' %>
+      <%= f.text_field :from, :class => 'timepicker-default input-small' %>
+      <span class="add-on">
+        <i class="icon-time"></i>
+      </span>
     </div>
   </div>
   <div class="control-group">
     <%= f.label :to, :class => 'control-label' %>
     <div class="controls">
-      <%= f.time_select :to, :class => 'time_select' %>
+      <%= f.text_field :to, :class => 'timepicker-default input-small' %>
+      <span class="add-on">
+        <i class="icon-time"></i>
+      </span>
     </div>
   </div>
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary', :remote => true %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+
+    $('.timepicker-default').timepicker(
+      {
+        showMeridian: false
+      }
+    );
+  });
+</script>
