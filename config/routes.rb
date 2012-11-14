@@ -15,6 +15,10 @@ Nama::Application.routes.draw do
     resources :timeslots
   end
 
+  match '/events/:event_id/timeslots/:id/duplicate',
+    :to => 'timeslots#duplicate', :via => :post,
+    :as => 'timeslot_duplicate'
+
   root to: 'static_pages#home'
 
   match '/about', to: 'static_pages#about'

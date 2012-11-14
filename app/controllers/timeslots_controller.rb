@@ -20,4 +20,13 @@ class TimeslotsController < ApplicationController
 
     render 'refresh'
   end
+
+  def duplicate
+    timeslot = Timeslot.find(params[:id])
+    @event = timeslot.event
+	timeslot = timeslot.dup
+    @event.timeslots << timeslot
+
+	render 'refresh'
+  end
 end

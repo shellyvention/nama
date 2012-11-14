@@ -19,6 +19,9 @@
           <%= link_to ll('.remove'), event_timeslot_path(@event, timeslot),
                 :remote => true, :method => :delete,
                 :class => 'btn btn-mini btn-danger' %>
+          <%= link_to ll('.duplicate'), timeslot_duplicate_path(@event, timeslot),
+                :remote => true, :method => :post,
+                :class => 'btn btn-mini' %>
         </td>
       </tr>
     <% end %>

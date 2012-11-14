@@ -4,11 +4,12 @@
 en:
   hello: "Hello world"
 
-  back:     Back
-  cancel:   Cancel
-  new:      New
-  edit:     Edit
-  destroy:  Destroy
-  add:      Add
-  remove:   Remove
-  confirm:  Are you sure?
+  back:      Back
+  cancel:    Cancel
+  new:       New
+  edit:      Edit
+  destroy:   Destroy
+  add:       Add
+  remove:    Remove
+  confirm:   Are you sure?
+  duplicate: Duplicate
