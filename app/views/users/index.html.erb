@@ -31,9 +31,6 @@
         <td><%= user.email %></td>
         <td>
           <%= link_to ll('.edit'), edit_user_path(user), :class => 'btn btn-mini' %>
-          <%= link_to ll('.destroy'), user_path(user), :method => :delete,
-                :data => { :confirm => ll('.confirm'), :default => 'Are you sure?' },
-                :class => 'btn btn-mini btn-danger' %>
         </td>
       </tr>
     <% end %>

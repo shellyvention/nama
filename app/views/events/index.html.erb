@@ -21,9 +21,6 @@
         <td><%= event.date %></td>
         <td>
           <%= link_to ll('.edit'), edit_event_path(event), :class => 'btn btn-mini' %>
-          <%= link_to ll('.destroy'), event_path(event), :method => :delete,
-                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                :class => 'btn btn-mini btn-danger' %>
         </td>
       </tr>
     <% end %>
