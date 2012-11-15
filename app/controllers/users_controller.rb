@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(params[:user])
+    @user.password = @user.password_confirmation = "notset"
 
     if @user.save
 	  flash[:success] = "User was successfully created."
@@ -50,5 +51,22 @@ class UsersController < ApplicationController
 	@user.destroy
 	flash[:success] = "User was successfully deleted."
 	redirect_to users_url
+  end
+
+  def signup
+  end
+
+  def create_activation
+    @user = User.find_by_email(params[:email])
+    @user.signup(params[:password], params[:password_confirmation])
+
+    if @user.save
+      redirect_to root_url
+    else
+      render 'signup'
+    end
+  end
+
+  def activate_user
   end
 end

@@ -1,6 +1,9 @@
 Nama::Application.routes.draw do
 
   resources :users
+  match '/signup',  to: 'users#signup'
+  match '/create_activation',
+    to: 'users#create_activation', :via => :post
 
   resources :groups
   match '/groups/:id/members/:user_id',
