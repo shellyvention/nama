@@ -5,6 +5,11 @@ Nama::Application.routes.draw do
   match '/create_activation',
     to: 'users#create_activation', :via => :post
 
+  match '/activate_user/:user_id/:activation_token',
+    to: 'users#activate_user', :via => :get
+
+  match '/activation_failure', to: 'users#activation_failure'
+
   resources :groups
   match '/groups/:id/members/:user_id',
     :to => 'groups#add_membership', :via => :post,

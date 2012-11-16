@@ -22,7 +22,7 @@
 class User < ActiveRecord::Base
     attr_accessible :date_of_birth, :email, :first_name, :last_name,
         :phone_landline, :phone_mobile, :postal_code, :street, :city,
-        :password, :password_confirmation
+        :password, :password_confirmation, :activation_token, :active
 
     has_secure_password
 
@@ -54,11 +54,27 @@ class User < ActiveRecord::Base
     validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
         uniqueness: { case_sensitive: false }
 
-    validates :password, presence: false, length: { minimum: 6 }
+    validates :password, allow_nil: true, length: { minimum: 6 }
 
     def signup(pw, pw_confirmation)
       self.password = pw
       self.password_confirmation = pw_confirmation
       self.activation_token = SecureRandom.urlsafe_base64
+
+      if self.save
+        UserMailer.activation_email(self).deliver
+      else
+        return false
+      end
+    end
+
+    def activate(token)
+      if self.activation_token == token
+        self.active = true
+        self.activation_token = nil
+        self.save
+      else
+        return false
+      end
     end
 end

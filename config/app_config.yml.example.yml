@@ -1,0 +1,35 @@
+development:
+  mail:
+    delivery_method:
+    smtp_settings:
+      address:
+      port:
+      user_name:
+      password:
+      authentication:
+      enable_starttls_auto:
+  domain:
+
+test:
+  mail:
+    delivery_method:
+    smtp_settings:
+      address:
+      port:
+      user_name:
+      password:
+      authentication:
+      enable_starttls_auto:
+  domain:
+
+production:
+  mail:
+    delivery_method:
+    smtp_settings:
+      address:
+      port:
+      user_name:
+      password:
+      authentication:
+      enable_starttls_auto:
+  domain:

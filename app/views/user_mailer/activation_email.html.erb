@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Account for <%= @user.first_name + " " + @user.last_name %></h1>
+    <p>
+      Please click on the link below to activate your user account.
+    </p>
+    <p><%= @activation_link %></p>
+  </body>
+</html>

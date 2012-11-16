@@ -1,25 +1,21 @@
 class UsersController < ApplicationController
-  # GET /users
+
   def index
     @users = User.all
   end
 
-  # GET /users/1
   def show
     @user = User.find(params[:id])
   end
 
-  # GET /users/new
   def new
     @user = User.new
   end
 
-  # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
   end
 
-  # POST /users
   def create
     @user = User.new(params[:user])
     @user.password = @user.password_confirmation = "notset"
@@ -32,7 +28,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # PUT /users/1
   def update
     @user = User.find(params[:id])
 
@@ -44,7 +39,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
   def destroy
     @user = User.find(params[:id])
 
@@ -58,9 +52,8 @@ class UsersController < ApplicationController
 
   def create_activation
     @user = User.find_by_email(params[:email])
-    @user.signup(params[:password], params[:password_confirmation])
 
-    if @user.save
+    if @user && @user.signup(params[:password], params[:password_confirmation])
       redirect_to root_url
     else
       render 'signup'
@@ -68,5 +61,12 @@ class UsersController < ApplicationController
   end
 
   def activate_user
+    @user = User.find_by_id(params[:user_id])
+
+    if @user && @user.activate(params[:activation_token])
+      redirect_to root_url
+    else
+      render 'activation_failure'
+    end
   end
 end

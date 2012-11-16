@@ -11,3 +11,6 @@
 
 # Ignore generated coverage files
 coverage
+
+# Ignore local app config file
+app_config.yml
