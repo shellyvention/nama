@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
 
     has_many :group_members
     has_many :groups, through: :group_members
-    has_many :events
+    has_many :events, dependent: :restrict
 
     before_save { |user| user.email = email.downcase }
 

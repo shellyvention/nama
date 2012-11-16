@@ -45,6 +45,10 @@ class UsersController < ApplicationController
 	@user.destroy
 	flash[:success] = "User was successfully deleted."
 	redirect_to users_url
+
+  rescue ActiveRecord::DeleteRestrictionError
+	flash[:error] = "Cannot delete user: User still owns events."
+    render 'show'
   end
 
   def signup
