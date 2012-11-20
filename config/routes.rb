@@ -27,6 +27,10 @@ Nama::Application.routes.draw do
     :to => 'timeslots#duplicate', :via => :post,
     :as => 'timeslot_duplicate'
 
+  resources :sessions, only: [:new, :create, :destroy]
+  match '/signin', to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
+
   root to: 'static_pages#home'
 
   match '/about',   to: 'static_pages#about'

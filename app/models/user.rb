@@ -2,21 +2,22 @@
 #
 # Table name: users
 #
-#  id               :integer          primary key
+#  id               :integer          not null, primary key
 #  last_name        :string(255)
 #  first_name       :string(255)
 #  street           :string(255)
 #  postal_code      :integer
+#  city             :string(255)
 #  phone_landline   :string(255)
 #  phone_mobile     :string(255)
 #  date_of_birth    :date
 #  email            :string(255)
-#  created_at       :datetime
-#  updated_at       :datetime
-#  city             :string(255)
 #  password_digest  :string(255)
 #  activation_token :string(255)
 #  active           :boolean          default(FALSE), not null
+#  remember_token   :string(255)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
 #
 
 class User < ActiveRecord::Base
@@ -31,6 +32,7 @@ class User < ActiveRecord::Base
     has_many :events, dependent: :restrict
 
     before_save { |user| user.email = email.downcase }
+    before_save :create_remember_token
 
     validates :first_name, :last_name, :street, :city,
         presence: true, length: { minimum: 2, maximum: 40 }
@@ -77,4 +79,9 @@ class User < ActiveRecord::Base
         return false
       end
     end
+
+    private
+      def create_remember_token
+        self.remember_token = SecureRandom.urlsafe_base64
+      end
 end

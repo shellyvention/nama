@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_filter :signed_in_user
 
   def index
     @groups = Group.all
@@ -64,4 +65,12 @@ class GroupsController < ApplicationController
 	@non_members = User.all - @group.users
 	render 'members'
   end
+
+  private
+    def signed_in_user
+      unless signed_in?
+        flash[:notice] = "Please sign in."
+        redirect_to signin_url
+      end
+    end
 end

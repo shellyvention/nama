@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :signed_in_user
 
   def index
     @users = User.all
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
     @user.password = @user.password_confirmation = "notset"
 
     if @user.save
-	  flash[:success] = "User was successfully created."
+      flash[:success] = "User was successfully created."
       redirect_to users_url
     else
       render 'new'
@@ -32,22 +33,22 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update_attributes(params[:user])
-	  flash[:success] = "User was successfully updated."
+      flash[:success] = "User was successfully updated."
       redirect_to users_url
-	else
-	  render 'edit'
+    else
+      render 'edit'
     end
   end
 
   def destroy
     @user = User.find(params[:id])
 
-	@user.destroy
-	flash[:success] = "User was successfully deleted."
-	redirect_to users_url
+    @user.destroy
+    flash[:success] = "User was successfully deleted."
+    redirect_to users_url
 
   rescue ActiveRecord::DeleteRestrictionError
-	flash[:error] = "Cannot delete user: User still owns events."
+    flash[:error] = "Cannot delete user: User still owns events."
     render 'show'
   end
 
@@ -58,7 +59,7 @@ class UsersController < ApplicationController
     @user = User.find_by_email(params[:email])
 
     if @user && @user.signup(params[:password], params[:password_confirmation])
-      redirect_to root_url
+      redirect_to signin_path
     else
       render 'signup'
     end
@@ -73,4 +74,12 @@ class UsersController < ApplicationController
       render 'activation_failure'
     end
   end
+
+  private
+    def signed_in_user
+      unless signed_in?
+        flash[:notice] = "Please sign in."
+        redirect_to signin_url
+      end
+    end
 end

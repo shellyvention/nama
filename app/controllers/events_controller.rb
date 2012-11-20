@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_filter :signed_in_user
 
   def index
     @events = Event.all
@@ -45,4 +46,12 @@ class EventsController < ApplicationController
 	flash[:success] = "Event was successfully deleted."
     redirect_to events_url
   end
+
+  private
+    def signed_in_user
+      unless signed_in?
+        flash[:notice] = "Please sign in."
+        redirect_to signin_url
+      end
+    end
 end
