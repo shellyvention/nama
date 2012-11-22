@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    @user.password = @user.password_confirmation = "notset"
+    @user.password = @user.password_confirmation = "default"
 
     if @user.save
       flash[:success] = "User was successfully created."
