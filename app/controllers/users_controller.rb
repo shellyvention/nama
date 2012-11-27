@@ -52,9 +52,6 @@ class UsersController < ApplicationController
     render 'show'
   end
 
-  def signup
-  end
-
   def create_activation
     @user = User.find_by_email(params[:email])
 

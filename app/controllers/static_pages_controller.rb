@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  def home
+  def signup
   end
 
   def help
