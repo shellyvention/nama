@@ -16,6 +16,7 @@
 #  activation_token :string(255)
 #  active           :boolean          default(FALSE), not null
 #  remember_token   :string(255)
+#  role             :integer          default(0)
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #

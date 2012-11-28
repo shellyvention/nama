@@ -16,6 +16,7 @@
 #  activation_token :string(255)
 #  active           :boolean          default(FALSE), not null
 #  remember_token   :string(255)
+#  role             :integer          default(0)
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #
@@ -58,6 +59,26 @@ class User < ActiveRecord::Base
 
     validates :password, allow_nil: true, length: { minimum: 6 }
 
+    def self.current=(user)
+      @current_user = user
+    end
+
+    def self.current
+      @current_user
+    end
+
+    def self.signed_in?
+      !@current_user.nil?
+    end
+
+    def is_admin?
+      self.role == 1
+    end
+
+    def is_organizer?
+      is_admin? || self.role == 2
+    end
+
     def signup(pw, pw_confirmation)
       self.password = pw
       self.password_confirmation = pw_confirmation
@@ -78,6 +99,14 @@ class User < ActiveRecord::Base
       else
         return false
       end
+    end
+
+    def self.current=(user)
+      @current_user = user
+    end
+
+    def self.current
+      @current_user ||= User.find_by_remember_token(cookies[:remember_token])
     end
 
     private

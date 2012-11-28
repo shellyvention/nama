@@ -14,6 +14,7 @@ class CreateUsers < ActiveRecord::Migration
 	  t.string :activation_token
       t.boolean :active, default: false, null: false
 	  t.string :remember_token
+	  t.integer :role, default: 0
 
       t.timestamps
     end

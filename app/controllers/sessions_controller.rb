@@ -18,4 +18,14 @@ class SessionsController < ApplicationController
     sign_out
     redirect_to root_url
   end
+
+  def sign_in(user)
+    cookies.permanent[:remember_token] = user.remember_token
+    User.current = user
+  end
+
+  def sign_out
+    User.current = nil
+    cookies.delete(:remember_token)
+  end
 end
