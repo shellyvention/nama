@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user
+  before_filter :signed_in_user, except: [:create_activation, :activate_user]
 
   def index
     @users = User.all
@@ -50,5 +50,25 @@ class UsersController < ApplicationController
   rescue ActiveRecord::DeleteRestrictionError
     flash[:error] = "Cannot delete user: User still owns events."
     render 'show'
+  end
+
+  def create_activation
+    @user = User.find_by_email(params[:email])
+
+    if @user && @user.signup(params[:password], params[:password_confirmation])
+      redirect_to signin_path
+    else
+      render 'static_pages/signup'
+    end
+  end
+
+  def activate_user
+    @user = User.find_by_id(params[:user_id])
+
+    if @user && @user.activate(params[:activation_token])
+      redirect_to root_url
+    else
+      render 'activation_failure'
+    end
   end
 end

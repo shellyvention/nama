@@ -2,10 +2,10 @@ Nama::Application.routes.draw do
 
   resources :users
   match '/create_activation',
-    to: 'static_pages#create_activation', :via => :post
+    to: 'users#create_activation', :via => :post
 
   match '/activate_user/:user_id/:activation_token',
-    to: 'static_pages#activate_user', :via => :get
+    to: 'users#activate_user', :via => :get
 
   match '/activation_failure', to: 'users#activation_failure'
 
