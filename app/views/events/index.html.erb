@@ -27,4 +27,6 @@
   </tbody>
 </table>
 
-<%= link_to ll('.new'), new_event_path, :class => 'btn btn-primary' %>
+<% if User.current.is_organizer? %>
+  <%= link_to ll('.new'), new_event_path, :class => 'btn btn-primary' %>
+<% end %>

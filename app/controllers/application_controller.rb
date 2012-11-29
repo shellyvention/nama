@@ -17,6 +17,26 @@ class ApplicationController < ActionController::Base
       unless User.signed_in?
         flash[:notice] = "Please sign in."
         redirect_to signin_url
+        return false
+      end
+      return true
+    end
+
+    def authorize_admin
+      return false unless signed_in_user
+
+      unless User.current.is_admin?
+        render 'static_pages/error'
+        return false
+      end
+    end
+
+    def authorize_organizer
+      return false unless signed_in_user
+
+      unless User.current.is_organizer?
+        render 'static_pages/error'
+        return false
       end
     end
 end

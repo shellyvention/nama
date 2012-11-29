@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :signed_in_user
+  before_filter :authorize_organizer, except: [:index, :show]
 
   def index
     @events = Event.all

@@ -24,7 +24,8 @@
 class User < ActiveRecord::Base
     attr_accessible :date_of_birth, :email, :first_name, :last_name,
         :phone_landline, :phone_mobile, :postal_code, :street, :city,
-        :password, :password_confirmation, :activation_token, :active
+        :password, :password_confirmation, :activation_token, :active,
+		:role
 
     has_secure_password
 
@@ -99,14 +100,6 @@ class User < ActiveRecord::Base
       else
         return false
       end
-    end
-
-    def self.current=(user)
-      @current_user = user
-    end
-
-    def self.current
-      @current_user ||= User.find_by_remember_token(cookies[:remember_token])
     end
 
     private

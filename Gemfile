@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'thin'
 gem 'rails', '3.2.8'
 gem 'sqlite3', '~> 1.3.6'
 gem 'bcrypt-ruby', '~> 3.0.1'
