@@ -1,13 +1,10 @@
-<%- model_class = Timeslot -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
-</div>
-<table class="table table-striped">
+<div class="span6">
+<table class="table table-striped span12">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:from) %></th>
-      <th><%= model_class.human_attribute_name(:to) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th>From</th>
+      <th>To</th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
   <tbody>
@@ -27,3 +24,8 @@
     <% end %>
   </tbody>
 </table>
+</div>
+
+<div class="span6">
+  placeholder for booked users and their information
+</div>

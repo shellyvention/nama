@@ -1,32 +1,38 @@
-<%- model_class = Event -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+  <h1>Event: <%= @event.name %>, <%= @event.date %></h1>
 </div>
 
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span3">
-      <h2><%= @event.name %>, <%= @event.date %></h2>
-      <ul>
-        <% if !@event.description.empty? %>
-        <li><%= @event.description %></li>
-        <% end %>
-        <li><%= @event.user.last_name %></li>
-      </ul>
+      <table class="table table-striped span12">
+        <tbody>
+          <tr>
+            <td><strong>Description</strong></td>
+            <td><%= @event.description %></td>
+          </tr>
+          <tr>
+            <td><strong>Owner</strong></td>
+            <td><%= @event.user.last_name %></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="span4" id="timeslot-div">
-      <%= render :partial => "timeslots/index", :locals => { :timeslots => @event.timeslots } %>
-    </div>
-    <div class="span4">
-      <%= render :partial => "timeslots/new" %>
+    <div class="span9">
+      <div class="row">
+        <%= render :partial => "timeslots/new" %>
+      </div>
+      <div class="row" id="timeslot-div">
+        <%= render :partial => "timeslots/index", :locals => { :timeslots => @event.timeslots } %>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="form-actions">
-  <%= link_to ll('.back'), events_path, :class => 'btn'  %>
-  <%= link_to ll('.edit'), edit_event_path(@event), :class => 'btn' %>
+  <%= link_to ll('.back'), events_path, :class => 'btn btn-small'  %>
+  <%= link_to ll('.edit'), edit_event_path(@event), :class => 'btn btn-small' %>
   <%= link_to ll('.destroy'), event_path(@event), :method => 'delete',
         :data => { :confirm => ll('.confirm'), :default => 'Are you sure?' },
-        :class => 'btn btn-danger' %>
+        :class => 'btn btn-danger btn-small' %>
 </div>
