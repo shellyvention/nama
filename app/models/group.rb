@@ -9,10 +9,10 @@
 #
 
 class Group < ActiveRecord::Base
-	attr_accessible :name
+  attr_accessible :name
 
-	has_many :group_members, dependent: :destroy
-	has_many :users, through: :group_members
+  has_many :group_members, dependent: :destroy
+  has_many :users, through: :group_members
 
-	validates :name, presence: true, length: { minimum: 2, maximum: 40 }
+  validates :name, presence: true, length: { minimum: 2, maximum: 40 }
 end

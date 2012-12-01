@@ -80,6 +80,14 @@ class User < ActiveRecord::Base
       is_admin? || self.role == 2
     end
 
+    def name
+      if !first_name.nil?
+        last_name + " " + first_name
+      else
+        last_name
+      end
+    end
+
     def signup(pw, pw_confirmation)
       self.password = pw
       self.password_confirmation = pw_confirmation

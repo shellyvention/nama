@@ -1,23 +1,19 @@
-<%- model_class = Group -%>
 <div class="page-header">
-	<h1><%=t '.title', :default => model_class.model_name.human %></h1>
+    <h1>Group <%= @group.name %></h1>
 </div>
 
 <div class="container-fluid">
-	<div class="row-fluid">
-		<div class="span2">
-			<h2><%= @group.name %></h2>
-		</div>
-		<div class="span8" id="member-div">
-			<%= render :partial => 'members' %>
-		</div>
-	</div>
+  <div class="row-fluid">
+    <div class="span5" id="member-div">
+      <%= render :partial => 'members' %>
+    </div>
+  </div>
 </div>
 
 <div class="form-actions">
-	<%= link_to ll('.back'), groups_path, :class => 'btn' %>
-	<%= link_to ll('.edit'), edit_group_path(@group), :class => 'btn' %>
-	<%= link_to ll('.destroy'), group_path(@group), :method => 'delete',
-          :data => { :confirm => ll('.confirm'), :default => 'Are you sure?' },
-		  :class => 'btn btn-danger' %>
+  <%= link_to ll('.back'), groups_path, :class => 'btn btn-small' %>
+  <%= link_to ll('.edit'), edit_group_path(@group), :class => 'btn btn-small' %>
+  <%= link_to ll('.destroy'), group_path(@group), :method => 'delete',
+        :data => { :confirm => ll('.confirm'), :default => 'Are you sure?' },
+        :class => 'btn btn-danger btn-small' %>
 </div>
