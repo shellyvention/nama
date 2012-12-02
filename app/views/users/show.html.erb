@@ -41,6 +41,10 @@
       <td><%= @user.email %></td>
     </tr>
     <tr>
+      <td><strong>Role:</strong></td>
+      <td><%= @user.role_name %></td>
+    </tr>
+    <tr>
       <td colspan="2">
         <%= link_to ll('.back'), users_path, :class => 'btn btn-small' %>
         <%= link_to ll('.edit'), edit_user_path(@user), :class => 'btn btn-small' %>

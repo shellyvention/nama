@@ -88,6 +88,17 @@ class User < ActiveRecord::Base
       end
     end
 
+    def role_name
+      case role
+        when 0
+          "User"
+        when 1
+          "Admin"
+        when 2
+          "Organizer"
+      end
+    end
+
     def signup(pw, pw_confirmation)
       self.password = pw
       self.password_confirmation = pw_confirmation
