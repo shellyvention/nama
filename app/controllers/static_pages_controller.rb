@@ -10,4 +10,10 @@ class StaticPagesController < ApplicationController
 
   def contact
   end
+
+  def home_admin
+  end
+
+  def home_user
+  end
 end
