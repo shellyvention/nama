@@ -29,4 +29,13 @@ class TimeslotsController < ApplicationController
 
 	render 'refresh'
   end
+
+  def enroll
+    timeslot = Timeslot.find(params[:id])
+    @event = timeslot.event
+    timeslot.user = User.current
+    timeslot.save
+
+	render 'refresh'
+  end
 end

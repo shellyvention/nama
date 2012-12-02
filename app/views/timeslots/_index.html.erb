@@ -13,12 +13,21 @@
         <td><%= timeslot.from %></td>
         <td><%= timeslot.to %></td>
         <td>
+        <% if User.current.is_organizer? %>
           <%= link_to ll('.remove'), event_timeslot_path(@event, timeslot),
                 :remote => true, :method => :delete,
                 :class => 'btn btn-mini btn-danger' %>
           <%= link_to ll('.duplicate'), timeslot_duplicate_path(@event, timeslot),
                 :remote => true, :method => :post,
                 :class => 'btn btn-mini' %>
+        <% elsif timeslot.user.nil? %>
+          <%= link_to ll('.enroll'), timeslot_enroll_path(@event, timeslot),
+                :remote => true, :method => :post,
+                :data => { :confirm => ll('.confirm_timeslot'), :default => 'Are you sure?' },
+                :class => 'btn btn-mini' %>
+        <% else %>
+          <%= timeslot.user.name %>
+        <% end %>
         </td>
       </tr>
     <% end %>
@@ -27,5 +36,5 @@
 </div>
 
 <div class="span6">
-  placeholder for booked users and their information
+  placeholder. will maybe be used, maybe not.
 </div>

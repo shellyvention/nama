@@ -4,12 +4,14 @@
 en:
   hello: "Hello world"
 
-  back:      Back
-  cancel:    Cancel
-  new:       New
-  edit:      Edit
-  destroy:   Destroy
-  add:       Add
-  remove:    Remove
-  confirm:   Are you sure?
-  duplicate: Duplicate
+  back:             Back
+  cancel:           Cancel
+  new:              New
+  edit:             Edit
+  destroy:          Destroy
+  add:              Add
+  remove:           Remove
+  confirm:          Are you sure?
+  confirm_timeslot: You are about to enroll for this Timeslot. Are you sure?
+  duplicate:        Duplicate
+  enroll:           Enroll

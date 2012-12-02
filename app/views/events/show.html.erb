@@ -19,9 +19,11 @@
       </table>
     </div>
     <div class="span9">
+    <% if User.current.is_organizer? %>
       <div class="row">
         <%= render :partial => "timeslots/new" %>
       </div>
+    <% end %>
       <div class="row" id="timeslot-div">
         <%= render :partial => "timeslots/index", :locals => { :timeslots => @event.timeslots } %>
       </div>
@@ -31,8 +33,10 @@
 
 <div class="form-actions">
   <%= link_to ll('.back'), events_path, :class => 'btn btn-small'  %>
+<% if User.current.is_organizer? %>
   <%= link_to ll('.edit'), edit_event_path(@event), :class => 'btn btn-small' %>
   <%= link_to ll('.destroy'), event_path(@event), :method => 'delete',
         :data => { :confirm => ll('.confirm'), :default => 'Are you sure?' },
         :class => 'btn btn-danger btn-small' %>
+<% end %>
 </div>
