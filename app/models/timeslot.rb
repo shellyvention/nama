@@ -20,4 +20,14 @@ class Timeslot < ActiveRecord::Base
   validates :from, presence: true
   validates :to, presence: true
   validates :event_id, presence: true
+
+  def can_enroll?
+    return false unless user.nil?
+
+    list = Timeslot.joins(:event).where(
+      "events.date = :date AND timeslots.user_id = :user_id AND :to >= \"from\" AND \"to\" >= :from",
+      date: event.date, user_id: User.current.id, to: to, from: from)
+
+    list.empty?
+  end
 end

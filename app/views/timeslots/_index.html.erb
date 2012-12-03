@@ -20,13 +20,16 @@
           <%= link_to ll('.duplicate'), timeslot_duplicate_path(@event, timeslot),
                 :remote => true, :method => :post,
                 :class => 'btn btn-mini' %>
-        <% elsif timeslot.user.nil? %>
+        <% end %>
+        <% if timeslot.can_enroll? %>
           <%= link_to ll('.enroll'), timeslot_enroll_path(@event, timeslot),
                 :remote => true, :method => :post,
                 :data => { :confirm => ll('.confirm_timeslot'), :default => 'Are you sure?' },
                 :class => 'btn btn-mini' %>
-        <% else %>
+        <% elsif timeslot.user %>
           <%= timeslot.user.name %>
+        <% else %>
+          Cannot enroll
         <% end %>
         </td>
       </tr>
