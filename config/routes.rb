@@ -36,6 +36,8 @@ Nama::Application.routes.draw do
 
   root to: 'sessions#new'
 
+  resources :ratings
+
   match '/signup', to: 'static_pages#signup'
   match '/home_admin', to: 'static_pages#home_admin'
   match '/home_user', to: 'static_pages#home_user'

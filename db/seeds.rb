@@ -1,6 +1,7 @@
 # Seed database with initial data needed
 
 # Clean the whole database
+Rating.delete_all
 Timeslot.delete_all
 Event.delete_all
 GroupMember.delete_all

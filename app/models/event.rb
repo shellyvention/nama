@@ -15,7 +15,8 @@ class Event < ActiveRecord::Base
   attr_accessible :date, :description, :name, :user_id
 
   belongs_to :user
-  has_many	 :timeslots, dependent: :destroy
+  has_many :timeslots, dependent: :destroy
+  has_many :ratings
 
   validates :name, presence: true, length: { minimum: 2, maximum: 100 }
   validates :user_id, presence: true

@@ -1,0 +1,39 @@
+<h3>Ratings</h3>
+<div class="resource">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Event</th>
+        <th style="text-align: right;">
+          <%= image_tag "rating_small.png" %>
+        </th>
+        <th style="text-align: right;">
+          Maximum
+          <%= image_tag "rating_small.png" %>
+        </th>
+        <th style="text-align: right;">
+          Extra
+          <%= image_tag "rating_small.png" %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @ratings.each do |rating| %>
+        <tr>
+          <td><%= rating.user.name %></td>
+          <td><%= rating.event.name %></td>
+          <td style="text-align: right;">
+            <%= rating.stars %>
+          </td>
+          <td style="text-align: right;">
+            <%= rating.stars_max %>
+          </td>
+          <td style="text-align: right;">
+            <%= rating.stars_extra %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

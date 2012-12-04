@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
     has_many :groups, through: :group_members
     has_many :events, dependent: :restrict
     has_many :timeslots
+	has_many :ratings
 
     before_save { |user| user.email = email.downcase }
     before_save :create_remember_token
