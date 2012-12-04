@@ -105,6 +105,7 @@ label.error {
 .row .span-one-third {
   width: 270px;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .appRect {
@@ -118,6 +119,10 @@ label.error {
 
 .hero-unit {
   padding: 30px;
+}
+
+li.dropdown.open a b.caret {
+  display: none;
 }
 
 /* Styles for resources */
