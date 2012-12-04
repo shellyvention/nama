@@ -95,8 +95,9 @@ label.valid {
 label.error {
   font-weight: bold;
   color: red;
-  padding: 2px 8px;
+  padding: 0px 8px;
   margin-top: 2px;
+  margin-bottom: 0px !important;
 }
 
 /* Styles for admin's home */
@@ -119,11 +120,16 @@ label.error {
   padding: 30px;
 }
 
-/* Styles for resources index page */
+/* Styles for resources */
 
-.resource-index {
+.resource {
   background: -moz-linear-gradient(center top , #F9F9F9 50%, #F0F0F0 100%) repeat scroll 0 0 transparent;
   border: 1px solid #DDDDDD;
   border-radius: 5px 5px 5px 5px;
   padding: 10px;
+}
+
+.table th, .table td {
+  border-bottom: 1px solid #DDDDDD;
+  border-top: none;
 }
