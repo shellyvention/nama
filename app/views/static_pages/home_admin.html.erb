@@ -1,3 +1,18 @@
-<div class="center hero-unit">
-  <h2>Overview for Admins</h2>
+<div class="hero-unit">
+  <h2>Welcome <%= User.current.name %></h2>
+  <p>This is the admin page for NaMa where changes to Users, Groups and/or Events can be made.</p>
+</div>
+<div class="row">
+  <div class="span-one-third appRect">
+    <%= link_to image_tag("user.png"), users_path %>
+    <h4>Users</h4>
+  </div>
+  <div class="span-one-third appRect">
+    <%= link_to image_tag("group.png"), groups_path %>
+    <h4>Groups</h4>
+  </div>
+  <div class="span-one-third appRect">
+    <%= link_to image_tag("event.png"), events_path %>
+    <h4>Events</h4>
+  </div>
 </div>

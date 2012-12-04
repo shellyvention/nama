@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       sign_in user
       if user.role == 1
-        redirect_to users_url
+        redirect_to home_admin_url
       else
         redirect_to events_url
       end
