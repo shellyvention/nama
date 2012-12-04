@@ -1,39 +1,39 @@
-<div class="page-header">
-  <h1>Users</h1>
-</div>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Last Name</th>
-      <th>First Name</th>
-      <th>Street</th>
-      <th>Postal Code</th>
-      <th>City</th>
-      <th>Phone Landline</th>
-      <th>Phone Mobile</th>
-      <th>Date Of Birth</th>
-      <th>Email</th>
-      <th>&nbsp;</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
+<h3>Manage Users</h3>
+<div class="resource">
+  <table class="table table-hover">
+    <thead>
       <tr>
-        <td><%= link_to user.last_name, user_path(user) %></td>
-        <td><%= user.first_name %></td>
-        <td><%= user.street %></td>
-        <td><%= user.postal_code %></td>
-        <td><%= user.city %></td>
-        <td><%= user.phone_landline %></td>
-        <td><%= user.phone_mobile %></td>
-        <td><%= user.date_of_birth %></td>
-        <td><%= user.email %></td>
-        <td>
-          <%= link_to ll('.edit'), edit_user_path(user), :class => 'btn btn-mini' %>
-        </td>
+        <th>Last Name</th>
+        <th>First Name</th>
+        <th>Street</th>
+        <th>Postal Code</th>
+        <th>City</th>
+        <th>Phone Landline</th>
+        <th>Phone Mobile</th>
+        <th>Date Of Birth</th>
+        <th>Email</th>
+        <th>&nbsp;</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.last_name, user_path(user) %></td>
+          <td><%= user.first_name %></td>
+          <td><%= user.street %></td>
+          <td><%= user.postal_code %></td>
+          <td><%= user.city %></td>
+          <td><%= user.phone_landline %></td>
+          <td><%= user.phone_mobile %></td>
+          <td><%= user.date_of_birth %></td>
+          <td><%= user.email %></td>
+          <td style="text-align: right;">
+            <%= link_to ll('.edit'), edit_user_path(user), :class => 'btn btn-mini' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to ll('.new'), new_user_path, :class => 'btn btn-primary' %>
+  <%= link_to ll('.new'), new_user_path, :class => 'btn btn-primary' %>
+</div>
