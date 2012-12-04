@@ -1,3 +1,15 @@
-<div class="center hero-unit">
-  <h2>Overview for Users</h2>
+<div class="hero-unit">
+  <h2>Welcome <%= User.current.name %></h2>
+  <p>This is the user page for NaMa where you can enroll for Events and see all
+  your Ratings.</p>
+</div>
+<div class="row">
+  <div class="span-one-third appRect">
+    <%= link_to image_tag("event.png"), events_path %>
+    <h4>Events</h4>
+  </div>
+  <div class="span-one-third appRect">
+    <%= link_to image_tag("rating.png"), '#' %>
+    <h4>Ratings</h4>
+  </div>
 </div>

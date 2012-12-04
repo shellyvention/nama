@@ -1,4 +1,8 @@
-<h3>Manage Events</h3>
+<% if User.current.is_organizer? %>
+  <h3>Manage Events</h3>
+<% else %>
+  <h3>Events</h3>
+<% end %>
 <div class="resource">
   <table class="table user-info table-hover">
     <thead>

@@ -83,7 +83,7 @@ class User < ActiveRecord::Base
 
     def name
       if !first_name.nil?
-        last_name + " " + first_name
+        first_name + " " + last_name
       else
         last_name
       end

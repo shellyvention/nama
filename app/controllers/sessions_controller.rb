@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       if user.role == 1
         redirect_to home_admin_url
       else
-        redirect_to events_url
+        redirect_to home_user_url
       end
     else
 	  flash.now[:error] = "Invalid email/password combination"

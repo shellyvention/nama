@@ -1,4 +1,4 @@
-<div class="span4">
+<div class="span6">
   <%= form_for [@event, Timeslot.new], :html => { :class => 'form-horizontal' }, :remote => true do |f| %>
   <table class="table">
     <thead>
@@ -33,10 +33,6 @@
     </tbody>
   </table>
   <% end %>
-</div>
-
-<div class="span8">
-  &nbsp;
 </div>
 
 <script type="text/javascript">
