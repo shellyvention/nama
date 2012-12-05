@@ -123,6 +123,12 @@ class User < ActiveRecord::Base
       end
     end
 
+    default_scope order(:first_name, :last_name)
+    scope :event_participants, lambda { |event| where(
+      "id IN (SELECT user_id FROM timeslots " +
+      "WHERE event_id = :event_id)", event_id: event.id)
+    }
+
     private
       def create_remember_token
         self.remember_token = SecureRandom.urlsafe_base64

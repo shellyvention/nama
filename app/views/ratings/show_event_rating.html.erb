@@ -1,0 +1,52 @@
+<h3>Rate Event</h3>
+<div class="resource">
+  <table class="table">
+    <thead>
+      <tr>
+        <th><strong>Name</strong></th>
+        <th><strong>Description</strong></th>
+        <th><strong>Owner</strong></th>
+        <th><strong>Date</strong></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @event.name %></td>
+        <td><%= @event.description %></td>
+        <td><%= @event.user.name %></td>
+        <td><%= @event.date %></td>
+      </tr>
+    </tbody>
+  </table>
+  <br/>
+  <h4>Rate Event Participants</h4>
+  <%= form_tag(update_event_rating_path(@event.id), :method => :put) do %>
+  <table class="table" style="width: 70%;">
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td style="width: 20%;">
+            <%= user.name %>
+          </td>
+          <td style="width: 10%;">3 TS</td>
+          <td style="width: 20%;">
+            Stars: <%= text_field_tag "rating[#{user.id}][stars]", '1', :class => 'input-mini' %>
+          </td>
+          <td style="width: 20%;">
+            Max: <%= text_field_tag "rating[#{user.id}][stars_max]", '1', :class => 'input-mini' %>
+          </td>
+          <td style="width: 20%;">
+            Extra: <%= text_field_tag "rating[#{user.id}][stars_extra]", '1', :class => 'input-mini' %>
+          </td>
+        </tr>
+      <% end %>
+      <tr>
+        <td>
+          <%= submit_tag ll('.save'), :class => 'btn btn-primary' %>
+          <%= link_to ll('.cancel'), @event, :class => 'btn' %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <% end %>
+</div>

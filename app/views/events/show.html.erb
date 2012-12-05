@@ -38,5 +38,6 @@
   <%= link_to ll('.destroy'), event_path(@event), :method => 'delete',
         :data => { :confirm => ll('.confirm'), :default => 'Are you sure?' },
         :class => 'btn btn-danger btn-small' %>
+  <%= link_to ll('.rate_event'), show_event_rating_path(@event), :class => 'btn btn-small' %>
 <% end %>
 </div>

@@ -15,3 +15,5 @@ en:
   confirm_timeslot: You are about to enroll for this Timeslot. Are you sure?
   duplicate:        Duplicate
   enroll:           Enroll
+  rate_event:       Rate Event
+  save:             Save
