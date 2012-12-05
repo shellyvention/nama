@@ -1,6 +1,15 @@
 class SessionsController < ApplicationController
 
   def new
+    if User.current
+      if User.current.role == 1
+        redirect_to home_admin_url
+      else
+        redirect_to home_user_url
+      end
+    else
+      render 'new'
+    end
   end
 
   def create
@@ -13,7 +22,7 @@ class SessionsController < ApplicationController
         redirect_to home_user_url
       end
     else
-	  flash.now[:error] = "Invalid email/password combination"
+      flash.now[:error] = "Invalid email/password combination"
       render 'new'
     end
   end
