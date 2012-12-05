@@ -29,6 +29,7 @@
           <td><%= user.email %></td>
           <td style="text-align: right;">
             <%= link_to ll('.edit'), edit_user_path(user), :class => 'btn btn-mini' %>
+            <%= link_to ll('.view'), user_path(user), :class => 'btn btn-mini' %>
           </td>
         </tr>
       <% end %>
