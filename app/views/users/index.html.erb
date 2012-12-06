@@ -10,6 +10,7 @@
         <th>City</th>
         <th>Date Of Birth</th>
         <th>Email</th>
+        <th>Active?</th>
         <th>&nbsp;</th>
       </tr>
     </thead>
@@ -23,6 +24,13 @@
           <td><%= user.city %></td>
           <td><%= user.date_of_birth %></td>
           <td><%= user.email %></td>
+          <td>
+            <% if user.active %>
+              <i class="icon-ok"></i>
+            <% else %>
+              <i class="icon-remove"></i>
+            <% end %>
+          </td>
           <td style="text-align: right;">
             <%= link_to ll('.edit'), edit_user_path(user), :class => 'btn btn-mini' %>
             <%= link_to ll('.view'), user_path(user), :class => 'btn btn-mini' %>
