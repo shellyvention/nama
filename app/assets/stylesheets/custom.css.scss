@@ -88,7 +88,7 @@ footer {
   }
 }
 
-/* Styles for jQuery form validation plugin */
+/* jQuery form validation plugin */
 
 label.valid {
   width: 24px;
@@ -106,7 +106,7 @@ label.error {
   margin-bottom: 0px !important;
 }
 
-/* Styles for admin's home */
+/* admin's and user's home */
 
 .row .span-one-third {
   width: 270px;
@@ -128,11 +128,8 @@ label.error {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
 }
 
-li.dropdown.open a b.caret {
-  display: none;
-}
 
-/* Styles for resources */
+/* all resources */
 
 .resource {
   @include gradient(#F9F9F9 50%, #F0F0F0 100%);
@@ -144,4 +141,14 @@ li.dropdown.open a b.caret {
 .table th, .table td {
   border-bottom: 1px solid #DDDDDD;
   border-top: none;
+}
+
+/* others */
+li.dropdown.open a b.caret {
+  display: none;
+}
+
+.input-mini {
+  width: 40px !important;
+  margin: 0 !important;
 }

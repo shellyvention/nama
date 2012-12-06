@@ -48,7 +48,6 @@ Nama::Application.routes.draw do
   match '/signup', to: 'static_pages#signup'
   match '/home_admin', to: 'static_pages#home_admin'
   match '/home_user', to: 'static_pages#home_user'
-  match '/about', to: 'static_pages#about'
-  match '/contact', to: 'static_pages#contact'
+  match '/support', to: 'static_pages#support'
   match '/help', to: 'static_pages#help'
 end

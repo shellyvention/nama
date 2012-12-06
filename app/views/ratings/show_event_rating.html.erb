@@ -25,18 +25,18 @@
       <tbody>
         <% @users.each do |user| %>
           <tr>
-            <td style="width: 20%;">
+            <td style="width: 35%; vertical-align: middle;">
               <%= user.full_name %>
             </td>
-            <td style="width: 10%;">3 TS</td>
-            <td style="width: 20%;">
-              Stars: <%= text_field_tag "rating[#{user.id}][stars]", @ratings[user.id].stars, :class => 'input-mini' %>
+            <td style="width: 20%; vertical-align: middle;">
+              <%= image_tag "rating_small.png" %>
+              <%= text_field_tag "rating[#{user.id}][stars]", @ratings[user.id].stars, :class => 'input-mini' %>
+              (max: <%= @ratings[user.id].stars_max %>)
             </td>
-            <td style="width: 20%;">
-              Max: <%= @ratings[user.id].stars_max %>
-            </td>
-            <td style="width: 20%;">
-              Extra: <%= text_field_tag "rating[#{user.id}][stars_extra]", @ratings[user.id].stars_extra, :class => 'input-mini' %>
+            <td style="width: 20%; vertical-align: middle;">
+              <%= image_tag "rating_small.png" %>
+              <%= image_tag "rating_small.png" %>
+              <%= text_field_tag "rating[#{user.id}][stars_extra]", @ratings[user.id].stars_extra, :class => 'input-mini' %>
             </td>
           </tr>
         <% end %>
