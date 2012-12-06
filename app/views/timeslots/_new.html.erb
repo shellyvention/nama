@@ -1,39 +1,37 @@
-<div class="span6">
-  <%= form_for [@event, Timeslot.new], :html => { :class => 'form-horizontal' }, :remote => true do |f| %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th colspan="5"><strong>New Timeslot</strong></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <%= f.label :from %>
-        </td>
-        <td>
-          <%= f.text_field :from, :class => 'timepicker-default input-small' %>
-          <span class="add-on">
-            <i class="icon-time"></i>
-          </span>
-        </td>
-        <td>
-          <%= f.label :to %>
-        </td>
-        <td>
-          <%= f.text_field :to, :class => 'timepicker-default input-small' %>
-          <span class="add-on">
-            <i class="icon-time"></i>
-          </span>
-        </td>
-        <td>
-          <%= f.submit "Create", :class => 'btn btn-primary btn-small', :remote => true %>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <% end %>
-</div>
+<%= form_for [@event, Timeslot.new], :html => { :class => 'form-horizontal' }, :remote => true do |f| %>
+<table class="table">
+  <thead>
+    <tr>
+      <th colspan="5"><strong>New Timeslot</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <%= f.label :from %>
+      </td>
+      <td>
+        <%= f.text_field :from, :class => 'timepicker-default input-small' %>
+        <span class="add-on">
+          <i class="icon-time"></i>
+        </span>
+      </td>
+      <td>
+        <%= f.label :to %>
+      </td>
+      <td>
+        <%= f.text_field :to, :class => 'timepicker-default input-small' %>
+        <span class="add-on">
+          <i class="icon-time"></i>
+        </span>
+      </td>
+      <td>
+        <%= f.submit "Create", :class => 'btn btn-primary btn-small', :remote => true %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<% end %>
 
 <script type="text/javascript">
   $(document).ready(function() {

@@ -1,43 +1,37 @@
-<div class="page-header">
-  <h1>Event: <%= @event.name %>, <%= @event.date %></h1>
-</div>
+<h3><%= @event.name %>, <%= @event.date %></h3>
+<div class="resource">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Owner</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @event.description %></td>
+        <td><%= @event.user.full_name %></td>
+      </tr>
+    </tbody>
+  </table>
 
-<div class="container-fluid">
-  <div class="row-fluid">
-    <div class="span3">
-      <table class="table table-striped span12">
-        <tbody>
-          <tr>
-            <td><strong>Description</strong></td>
-            <td><%= @event.description %></td>
-          </tr>
-          <tr>
-            <td><strong>Owner</strong></td>
-            <td><%= @event.user.full_name %></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="span9">
+  <div style="width: 40%;">
     <% if User.current.is_organizer? %>
-      <div class="row">
-        <%= render :partial => "timeslots/new" %>
-      </div>
+      <%= render :partial => "timeslots/new" %>
     <% end %>
-      <div class="row" id="timeslot-div">
-        <%= render :partial => "timeslots/index", :locals => { :timeslots => @event.timeslots } %>
-      </div>
-    </div>
   </div>
-</div>
 
-<div class="form-actions">
+  <div id="timeslot-div" style="width: 40%;">
+    <%= render :partial => "timeslots/index", :locals => { :timeslots => @event.timeslots } %>
+  </div>
+
   <%= link_to ll('.back'), events_path, :class => 'btn btn-small'  %>
-<% if User.current.is_organizer? %>
-  <%= link_to ll('.edit'), edit_event_path(@event), :class => 'btn btn-small' %>
-  <%= link_to ll('.destroy'), event_path(@event), :method => 'delete',
-        :data => { :confirm => ll('.confirm'), :default => 'Are you sure?' },
-        :class => 'btn btn-danger btn-small' %>
-  <%= link_to ll('.rate_event'), show_event_rating_path(@event), :class => 'btn btn-small' %>
-<% end %>
+
+  <% if User.current.is_organizer? %>
+    <%= link_to ll('.edit'), edit_event_path(@event), :class => 'btn btn-small' %>
+    <%= link_to ll('.destroy'), event_path(@event), :method => 'delete',
+          :data => { :confirm => ll('.confirm'), :default => 'Are you sure?' },
+          :class => 'btn btn-danger btn-small' %>
+    <%= link_to ll('.rate_event'), show_event_rating_path(@event), :class => 'btn btn-small', :style => 'float: right;' %>
+  <% end %>
 </div>
