@@ -23,4 +23,8 @@ class Rating < ActiveRecord::Base
         "events.date = :date AND timeslots.user_id = :user_id AND :to >= \"from\" AND \"to\" >= :from",
         date: event.date, user_id: User.current.id, to: to, from: from)
   end
+
+  scope :event_ratings, lambda { |event| where(
+    "event_id = :event_id", event_id: event.id).order("user_id")
+  }
 end
