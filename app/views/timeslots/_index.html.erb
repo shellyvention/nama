@@ -27,7 +27,7 @@
                 :data => { :confirm => ll('.confirm_timeslot'), :default => 'Are you sure?' },
                 :class => 'btn btn-mini' %>
         <% elsif timeslot.user %>
-          <%= timeslot.user.name %>
+          <%= timeslot.user.full_name %>
         <% else %>
           Cannot enroll
         <% end %>

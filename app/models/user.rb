@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
     has_many :groups, through: :group_members
     has_many :events, dependent: :restrict
     has_many :timeslots
-	has_many :ratings
+	  has_many :ratings
 
     before_save { |user| user.email = email.downcase }
     before_save :create_remember_token
@@ -82,9 +82,9 @@ class User < ActiveRecord::Base
       is_admin? || self.role == 2
     end
 
-    def name
+    def full_name
       if !first_name.nil?
-        first_name + " " + last_name
+        last_name + " " + first_name
       else
         last_name
       end
@@ -123,7 +123,7 @@ class User < ActiveRecord::Base
       end
     end
 
-    default_scope order(:first_name, :last_name)
+    default_scope order(:last_name, :first_name)
     scope :event_participants, lambda { |event| where(
       "id IN (SELECT user_id FROM timeslots " +
       "WHERE event_id = :event_id)", event_id: event.id)

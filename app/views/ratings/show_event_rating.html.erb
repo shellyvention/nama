@@ -13,7 +13,7 @@
       <tr>
         <td><%= @event.name %></td>
         <td><%= @event.description %></td>
-        <td><%= @event.user.name %></td>
+        <td><%= @event.user.full_name %></td>
         <td><%= @event.date %></td>
       </tr>
     </tbody>
@@ -26,7 +26,7 @@
         <% @users.each do |user| %>
           <tr>
             <td style="width: 20%;">
-              <%= user.name %>
+              <%= user.full_name %>
             </td>
             <td style="width: 10%;">3 TS</td>
             <td style="width: 20%;">

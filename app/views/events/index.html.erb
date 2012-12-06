@@ -19,7 +19,7 @@
         <tr>
           <td><%= link_to event.name, event_path(event) %></td>
           <td><%= event.description %></td>
-          <td><%= event.user.last_name %></td>
+          <td><%= event.user.full_name %></td>
           <td><%= event.date %></td>
           <td style="text-align: right;">
           <% if User.current.is_organizer? %>

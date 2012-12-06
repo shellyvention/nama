@@ -20,7 +20,7 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%= user.name %></td>
+          <td><%= user.full_name %></td>
           <td style="text-align: right;">
             <%= Rating.rating_per_user(user.id, "stars") %>
           </td>

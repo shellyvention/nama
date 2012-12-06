@@ -6,7 +6,7 @@
     <tbody>
       <% @group.users.each do |member| %>
       <tr>
-        <td><%= member.name %></td>
+        <td><%= member.full_name %></td>
         <td>
           <%= link_to ll('remove'), group_memberships_path(@group, member),
                 :class => 'btn btn-mini btn-danger',
@@ -26,7 +26,7 @@
       <tbody>
         <% @non_members.each do |member| %>
         <tr>
-          <td><%= member.name %></td>
+          <td><%= member.full_name %></td>
           <td><%= link_to ll('add'), group_memberships_path(@group, member),
                     :class => 'btn btn-mini',
                     :remote => true, :method => :post %>
