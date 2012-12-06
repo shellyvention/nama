@@ -24,6 +24,10 @@ class Rating < ActiveRecord::Base
         date: event.date, user_id: User.current.id, to: to, from: from)
   end
 
+  def self.rating_per_user(user_id, k)
+     Rating.sum(k, conditions: ['user_id = ?', user_id])
+  end
+
   scope :event_ratings, lambda { |event| where(
     "event_id = :event_id", event_id: event.id).order("user_id")
   }

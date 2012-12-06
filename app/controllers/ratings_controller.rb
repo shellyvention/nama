@@ -2,6 +2,7 @@ class RatingsController < ApplicationController
 
   def index
     @ratings = Rating.all
+    @users = User.all
   end
 
   def show_event_rating

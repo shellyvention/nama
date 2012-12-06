@@ -4,7 +4,6 @@
     <thead>
       <tr>
         <th>User</th>
-        <th>Event</th>
         <th style="text-align: right;">
           <%= image_tag "rating_small.png" %>
         </th>
@@ -19,18 +18,17 @@
       </tr>
     </thead>
     <tbody>
-      <% @ratings.each do |rating| %>
+      <% @users.each do |user| %>
         <tr>
-          <td><%= rating.user.name %></td>
-          <td><%= rating.event.name %></td>
+          <td><%= user.name %></td>
           <td style="text-align: right;">
-            <%= rating.stars %>
+            <%= Rating.rating_per_user(user.id, "stars") %>
           </td>
           <td style="text-align: right;">
-            <%= rating.stars_max %>
+            <%= Rating.rating_per_user(user.id, "stars_max") %>
           </td>
           <td style="text-align: right;">
-            <%= rating.stars_extra %>
+            <%= Rating.rating_per_user(user.id, "stars_extra") %>
           </td>
         </tr>
       <% end %>
