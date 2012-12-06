@@ -17,11 +17,14 @@ This is the ZHAW semester project developed by Sandra Freihofer.
 
 ```
 $ cd nama
+$ mv config/app_config.yml.example config/app_config.yml
 $ bundle install
 $ rake db:migrate
 $ rake db:seed
 ```
 
+* With a web browser access `http://localhost:3000`
 * Sign in as user `nama` with password `default`
+* **Note:** For successful user signup you have to make changes to `config/app_config.yml` for email notifications
 
 ## Copyright and license
