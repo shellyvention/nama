@@ -38,25 +38,30 @@
         <td style="width: 20%"><strong>Email:</strong></td>
         <td style="width: 80%"><%= @user.email %></td>
       </tr>
-      <tr>
-        <td style="width: 20%"><strong>Role:</strong></td>
-        <td style="width: 80%"><%= @user.role_name %></td>
-      </tr>
-      <tr>
-        <td style="width: 20%"><strong>Active?</strong></td>
-        <td style="width: 80%">
-        <% if @user.active %>
-          <i class="icon-ok"></i>
-        <% else %>
-          <i class="icon-remove"></i>
-        </td>
+      <% if User.current.is_organizer? %>
+        <tr>
+          <td style="width: 20%"><strong>Role:</strong></td>
+          <td style="width: 80%"><%= @user.role_name %></td>
+        </tr>
+        <tr>
+          <td style="width: 20%"><strong>Active?</strong></td>
+          <td style="width: 80%">
+          <% if @user.active %>
+            <i class="icon-ok"></i>
+          <% else %>
+            <i class="icon-remove"></i>
+          </td>
+        <% end %>
+        </tr>
       <% end %>
-      </tr>
     </tbody>
   </table>
-  <%= link_to ll('.back'), users_path, :class => 'btn btn-small' %>
-  <%= link_to ll('.edit'), edit_user_path(@user), :class => 'btn btn-small' %>
-  <%= link_to ll('.destroy'), user_path(@user), :method => 'delete',
-        :data => { :confirm => ll('.confirm'), :default => 'Are you sure?' },
-        :class => 'btn btn-danger btn-small' %>
+
+  <% if User.current.is_organizer? %>
+    <%= link_to ll('.back'), users_path, :class => 'btn btn-small' %>
+    <%= link_to ll('.edit'), edit_user_path(@user), :class => 'btn btn-small' %>
+    <%= link_to ll('.destroy'), user_path(@user), :method => 'delete',
+          :data => { :confirm => ll('.confirm'), :default => 'Are you sure?' },
+          :class => 'btn btn-danger btn-small' %>
+  <% end %>
 </div>
