@@ -1,6 +1,6 @@
 # Seed database with initial data needed
 
-# Clean the whole database
+# Clean all tables
 Rating.delete_all
 Timeslot.delete_all
 Event.delete_all
@@ -8,7 +8,7 @@ GroupMember.delete_all
 Group.delete_all
 User.delete_all
 
-# Default user to sign up the first time
+# Default admin user to sign in the first time
 User.new({
   last_name: "Administrator",
   email: "nama",

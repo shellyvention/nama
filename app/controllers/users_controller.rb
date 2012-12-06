@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :authorize_admin, except: [:show, :create_activation, :activate_user]
 
   def index
-    @users = User.all
+    @users = User.where('email != \'nama\'')
   end
 
   def show
