@@ -30,4 +30,10 @@ class Timeslot < ActiveRecord::Base
 
     list.empty?
   end
+
+  def self.calculate_stars_max(user, event)
+    Timeslot.where(
+      user_id: user.is_a?(User) ? user.id : user,
+      event_id: event.id).count * 3
+  end
 end

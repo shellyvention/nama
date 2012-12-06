@@ -9,10 +9,15 @@ class RatingsController < ApplicationController
     @event = Event.find(params[:event_id])
     @users = User.event_participants(@event)
 
-    event_ratings = Rating.event_ratings(@event)
-    @stars = event_ratings.sum(:stars, :group => :user_id)
-    @stars_max = event_ratings.sum(:stars_max, :group => :user_id)
-    @stars_extra = event_ratings.sum(:stars_extra, :group => :user_id)
+    @ratings = {}
+    @users.each do |user|
+      rating = Rating.user_event_rating(user, @event).first
+      if rating.nil?
+        rating = Rating.new
+        rating.stars_max = Timeslot.calculate_stars_max(user, @event)
+      end
+      @ratings[user.id] = rating
+    end
   end
 
   def update_event_rating
@@ -22,10 +27,16 @@ class RatingsController < ApplicationController
 
     if ratings != nil
       ratings.keys.each do |id|
-        Rating.create(
-          user_id: id, event_id: event_id, stars: ratings[id][:stars],
-          stars_max: ratings[id][:stars_max], stars_extra: ratings[id][:stars_extra]
-        )
+        rating = Rating.user_event_rating(id, @event).first
+        if rating
+          rating.update_attributes(stars: ratings[id][:stars],
+            stars_max: ratings[id][:stars_max], stars_extra: ratings[id][:stars_extra])
+        else
+          Rating.create(
+            user_id: id, event_id: event_id, stars: ratings[id][:stars],
+            stars_max: Timeslot.calculate_stars_max(id, @event), stars_extra: ratings[id][:stars_extra]
+          )
+        end
       end
     end
     redirect_to @event

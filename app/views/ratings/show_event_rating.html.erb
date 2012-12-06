@@ -30,13 +30,13 @@
             </td>
             <td style="width: 10%;">3 TS</td>
             <td style="width: 20%;">
-              Stars: <%= text_field_tag "rating[#{user.id}][stars]", @stars[user.id], :class => 'input-mini' %>
+              Stars: <%= text_field_tag "rating[#{user.id}][stars]", @ratings[user.id].stars, :class => 'input-mini' %>
             </td>
             <td style="width: 20%;">
-              Max: <%= text_field_tag "rating[#{user.id}][stars_max]", @stars_max[user.id], :class => 'input-mini' %>
+              Max: <%= @ratings[user.id].stars_max %>
             </td>
             <td style="width: 20%;">
-              Extra: <%= text_field_tag "rating[#{user.id}][stars_extra]", @stars_extra[user.id], :class => 'input-mini' %>
+              Extra: <%= text_field_tag "rating[#{user.id}][stars_extra]", @ratings[user.id].stars_extra, :class => 'input-mini' %>
             </td>
           </tr>
         <% end %>

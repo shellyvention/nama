@@ -18,17 +18,13 @@ class Rating < ActiveRecord::Base
   belongs_to :user
   belongs_to :event
 
-  def rating_per_event
-    Rating.joins(:event).where(
-        "events.date = :date AND timeslots.user_id = :user_id AND :to >= \"from\" AND \"to\" >= :from",
-        date: event.date, user_id: User.current.id, to: to, from: from)
-  end
-
   def self.rating_per_user(user_id, k)
      Rating.sum(k, conditions: ['user_id = ?', user_id])
   end
 
-  scope :event_ratings, lambda { |event| where(
-    "event_id = :event_id", event_id: event.id).order("user_id")
+  scope :user_event_rating, lambda { |user, event|
+    where(
+      user_id: user.is_a?(User) ? user.id : user,
+      event_id: event.is_a?(Event) ? event.id : event)
   }
 end
