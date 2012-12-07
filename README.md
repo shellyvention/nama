@@ -27,4 +27,20 @@ $ rake db:seed
 * Sign in as user `nama` with password `default`
 * **Note:** For successful user signup you have to make changes to `config/app_config.yml` for email notifications
 
+### Example Gmail setup
+
+```
+development:
+  mail:
+    delivery_method: :smtp
+    smtp_settings:
+      address: smtp.gmail.com
+      port: 587
+      user_name: <username>
+      password: <password>
+      authentication: plain
+      enable_starttls_auto: true
+  domain: localhost:3000
+```
+
 ## Copyright and license
