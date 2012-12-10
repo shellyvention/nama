@@ -124,9 +124,10 @@ class User < ActiveRecord::Base
     end
 
     default_scope order(:last_name, :first_name)
-    scope :event_participants, lambda { |event| where(
-      "id IN (SELECT user_id FROM timeslots " +
-      "WHERE event_id = :event_id)", event_id: event.id)
+    scope :event_participants, lambda { |event|
+	  where(
+        "id IN (SELECT user_id FROM timeslots " +
+        "WHERE event_id = :event_id)", event_id: event.id)
     }
 
     private
