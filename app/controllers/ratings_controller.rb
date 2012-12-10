@@ -30,11 +30,12 @@ class RatingsController < ApplicationController
         rating = Rating.user_event_rating(id, @event).first
         if rating
           rating.update_attributes(stars: ratings[id][:stars],
-            stars_max: Timeslot.calculate_stars_max(id, @event), stars_extra: ratings[id][:stars_extra])
+            stars_extra: ratings[id][:stars_extra])
         else
+          stars_max = Timeslot.calculate_stars_max(id, @event)
           Rating.create(
             user_id: id, event_id: event_id, stars: ratings[id][:stars],
-            stars_max: Timeslot.calculate_stars_max(id, @event), stars_extra: ratings[id][:stars_extra]
+            stars_max: stars_max, stars_extra: ratings[id][:stars_extra]
           )
         end
       end
