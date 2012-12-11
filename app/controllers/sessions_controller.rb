@@ -15,14 +15,20 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by_email(params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
-      sign_in user
-      if user.role == 1
-        redirect_to home_admin_url
+      if user.active
+        sign_in user
+        if user.role == 1
+          redirect_to home_admin_url
+        else
+          redirect_to home_user_url
+        end
       else
-        redirect_to home_user_url
+        flash.now[:error] = "Your user account is disabled.
+          Please contact the administrator."
+        render 'new'
       end
     else
-      flash.now[:error] = "Invalid email/password combination"
+      flash.now[:error] = "Invalid email/password combination."
       render 'new'
     end
   end

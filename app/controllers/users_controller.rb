@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    @user.password = @user.password_confirmation = "default"
+    @user.default_pw
 
     if @user.save
       flash[:success] = "User was successfully created."
@@ -33,6 +33,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update_attributes(params[:user])
+      if !@user.active
+        @user.activation_token = "locked"
+        @user.save
+      else
+        @user.activation_token = nil
+        @user.save
+      end
       flash[:success] = "User was successfully updated."
       redirect_to users_url
     else
@@ -58,6 +65,7 @@ class UsersController < ApplicationController
     if @user && @user.signup(params[:password], params[:password_confirmation])
       redirect_to signin_path
     else
+      flash[:error] = "Cannot signup user: User account is disabled."
       render 'static_pages/signup'
     end
   end

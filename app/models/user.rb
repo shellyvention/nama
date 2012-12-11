@@ -101,7 +101,15 @@ class User < ActiveRecord::Base
       end
     end
 
+	def default_pw
+	  self.password = self.password_confirmation = SecureRandom.urlsafe_base64
+	end
+
     def signup(pw, pw_confirmation)
+	  if self.activation_token == "locked"
+	    return false
+      end
+
       self.password = pw
       self.password_confirmation = pw_confirmation
       self.activation_token = SecureRandom.urlsafe_base64
