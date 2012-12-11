@@ -12,7 +12,9 @@
     <tbody>
       <tr>
         <td><%= @event.name %></td>
-        <td><%= @event.description %></td>
+        <td>
+          <%= @event.description.gsub(/\n/, '<br>').html_safe %>
+        </td>
         <td><%= @event.user.full_name %></td>
         <td><%= @event.date %></td>
       </tr>
