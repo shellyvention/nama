@@ -20,3 +20,33 @@
     <h4>Ratings</h4>
   </div>
 </div>
+<br>
+
+<h4>
+  <%= image_tag "info_small.png" %>
+  General Information
+</h4>
+<div class="resource">
+  <table class="table">
+    <thead>
+      <tr>
+        <th># Members</th>
+        <th># Groups</th>
+        <th># Males</th>
+        <th># Females</th>
+        <th># Upcoming Events</th>
+        <th># Past Events</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @num_members %></td>
+        <td><%= @num_groups %></td>
+        <td><%= @num_males %></td>
+        <td><%= @num_females %></td>
+        <td><%= @num_upcoming_events %></td>
+        <td><%= @num_past_events %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
