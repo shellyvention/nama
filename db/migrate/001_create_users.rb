@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :phone_landline
       t.string :phone_mobile
       t.date :date_of_birth
+      t.integer :gender
       t.string :email
 	  t.string :password_digest
 	  t.string :activation_token

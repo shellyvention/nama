@@ -11,6 +11,7 @@
 #  phone_landline   :string(255)
 #  phone_mobile     :string(255)
 #  date_of_birth    :date
+#  gender           :integer
 #  email            :string(255)
 #  password_digest  :string(255)
 #  activation_token :string(255)
@@ -23,9 +24,9 @@
 
 class User < ActiveRecord::Base
     attr_accessible :date_of_birth, :email, :first_name, :last_name,
-        :phone_landline, :phone_mobile, :postal_code, :street, :city,
-        :password, :password_confirmation, :activation_token, :active,
-		:role
+      :phone_landline, :phone_mobile, :postal_code, :street, :city,
+      :password, :password_confirmation, :activation_token, :active,
+      :role, :gender
 
     has_secure_password
 
@@ -33,15 +34,15 @@ class User < ActiveRecord::Base
     has_many :groups, through: :group_members
     has_many :events, dependent: :restrict
     has_many :timeslots
-	  has_many :ratings
+    has_many :ratings
 
     before_save { |user| user.email = email.downcase }
     before_save :create_remember_token
 
     validates :first_name, :last_name, :street, :city,
-        presence: true, length: { minimum: 2, maximum: 40 }
+      presence: true, length: { minimum: 2, maximum: 40 }
     validates :postal_code, presence: true, length: { minimum: 4, maximum: 10 }
-    validates :date_of_birth, presence: true
+    validates :gender, :date_of_birth, presence: true
 
     # Breaking down the email regex:
     #
@@ -58,7 +59,7 @@ class User < ActiveRecord::Base
     #
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
-        uniqueness: { case_sensitive: false }
+      uniqueness: { case_sensitive: false }
 
     validates :password, allow_nil: true, length: { minimum: 6 }
 
@@ -101,13 +102,13 @@ class User < ActiveRecord::Base
       end
     end
 
-	def default_pw
-	  self.password = self.password_confirmation = SecureRandom.urlsafe_base64
-	end
+    def default_pw
+      self.password = self.password_confirmation = SecureRandom.urlsafe_base64
+    end
 
     def signup(pw, pw_confirmation)
-	  if self.activation_token == "locked"
-	    return false
+      if self.activation_token == "locked"
+        return false
       end
 
       self.password = pw
@@ -133,7 +134,7 @@ class User < ActiveRecord::Base
 
     default_scope { order(:last_name, :first_name) }
     scope :event_participants, lambda { |event|
-	  where(
+      where(
         "id IN (SELECT user_id FROM timeslots " +
         "WHERE event_id = :event_id)", event_id: event.id)
     }

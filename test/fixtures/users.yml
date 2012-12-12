@@ -11,6 +11,7 @@
 #  phone_landline   :string(255)
 #  phone_mobile     :string(255)
 #  date_of_birth    :date
+#  gender           :integer
 #  email            :string(255)
 #  password_digest  :string(255)
 #  activation_token :string(255)

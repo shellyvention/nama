@@ -3,6 +3,14 @@
     <tbody>
       <tr>
         <td style="width: 20%;">
+          <%= f.label :gender, :class => 'control-label' %>
+        </td>
+        <td>
+          <%= f.select :gender, [['Male', 0], ['Female', 1]], :include_blank => '' %>
+        </td>
+      </tr>
+      <tr>
+        <td style="width: 20%;">
           <%= f.label :last_name, :class => 'control-label' %>
         </td>
         <td>
@@ -78,7 +86,7 @@
           <%= f.label :role, :class => 'control-label' %>
         </td>
         <td>
-          <%= f.select :role, [['User', 0], ['Admin', 1], ['Organizer', 2]] %>
+          <%= f.select :role, [['User', 0], ['Admin', 1], ['Organizer', 2]], :include_blank => '' %>
         </td>
       </tr>
       <tr>
@@ -106,6 +114,9 @@
     $('form.form-horizontal').validate(
     {
       rules: {
+        'user[gender]': {
+          required: true
+        },
         'user[last_name]': {
           minlength: 2,
           maxlength: 40,
@@ -136,6 +147,9 @@
         },
         'user[email]': {
           email: true,
+          required: true
+        },
+        'user[role]': {
           required: true
         },
       },
