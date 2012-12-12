@@ -3,8 +3,8 @@
 # Table name: timeslots
 #
 #  id         :integer          not null, primary key
-#  from       :time
-#  to         :time
+#  start      :time
+#  finish     :time
 #  event_id   :integer          not null
 #  user_id    :integer
 #  created_at :datetime         not null
@@ -12,21 +12,21 @@
 #
 
 class Timeslot < ActiveRecord::Base
-  attr_accessible :event_id, :from, :to
+  attr_accessible :event_id, :start, :finish
 
   belongs_to :event
   belongs_to :user
 
-  validates :from, presence: true
-  validates :to, presence: true
+  validates :start, presence: true
+  validates :finish, presence: true
   validates :event_id, presence: true
 
   def can_enroll?
     return false unless user.nil?
 
     list = Timeslot.joins(:event).where(
-      "events.date = :date AND timeslots.user_id = :user_id AND :to >= \"from\" AND \"to\" >= :from",
-      date: event.date, user_id: User.current.id, to: to, from: from)
+      "events.date = :date AND timeslots.user_id = :user_id AND :finish >= start AND finish >= :start",
+      date: event.date, user_id: User.current.id, finish: finish, start: start)
 
     list.empty?
   end

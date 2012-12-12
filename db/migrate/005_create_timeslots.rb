@@ -1,8 +1,8 @@
 class CreateTimeslots < ActiveRecord::Migration
   def change
     create_table :timeslots do |t|
-      t.time :from
-      t.time :to
+      t.time :start
+      t.time :finish
       t.integer :event_id, null: false
       t.integer :user_id
 

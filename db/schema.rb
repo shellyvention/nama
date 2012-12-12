@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(:version => 6) do
   end
 
   create_table "timeslots", :force => true do |t|
-    t.time     "from"
-    t.time     "to"
+    t.time     "start"
+    t.time     "finish"
     t.integer  "event_id",   :null => false
     t.integer  "user_id"
     t.datetime "created_at", :null => false

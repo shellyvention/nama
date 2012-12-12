@@ -1,8 +1,8 @@
 <table class="table">
   <thead>
     <tr>
-      <th>From</th>
-      <th>To</th>
+      <th>Start</th>
+      <th>Finish</th>
       <th>&nbsp;</th>
       <th>Enrolled User</th>
     </tr>
@@ -10,8 +10,8 @@
   <tbody>
     <% timeslots.each do |timeslot| %>
       <tr>
-        <td><%= timeslot.from %></td>
-        <td><%= timeslot.to %></td>
+        <td><%= timeslot.start %></td>
+        <td><%= timeslot.finish %></td>
         <td>
           <% if User.current.is_organizer? %>
             <%= link_to ll('.remove'), event_timeslot_path(@event, timeslot),
