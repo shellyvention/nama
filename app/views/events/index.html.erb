@@ -1,10 +1,6 @@
-<% if User.current.is_organizer? %>
-  <h3>Manage Events</h3>
-<% else %>
-  <h3>Events</h3>
-<% end %>
+<h4>Upcoming Events</h4>
 <div class="resource">
-  <table class="table user-info table-hover">
+  <table class="table table-hover">
     <thead>
       <tr>
         <th>Name</th>
@@ -15,7 +11,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @events.each do |event| %>
+      <% @events_upcoming.each do |event| %>
         <tr>
           <td><%= link_to event.name, event_path(event) %></td>
           <td>
@@ -37,4 +33,36 @@
   <% if User.current.is_organizer? %>
     <%= link_to ll('.new'), new_event_path, :class => 'btn btn-primary' %>
   <% end %>
+</div>
+<br>
+<h4>Past Events</h4>
+<div class="resource">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Owner</th>
+        <th>Date</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @events_past.each do |event| %>
+        <tr>
+          <td><%= event.name %></td>
+          <td>
+            <%= event.description.gsub(/\n/, '<br>').html_safe %>
+          </td>
+          <td><%= event.user.full_name %></td>
+          <td><%= event.date %></td>
+          <td style="text-align: right;">
+          <% if User.current.is_organizer? %>
+            <%= link_to ll('.rate_event'), show_event_rating_path(event.id), :class => 'btn btn-mini' %>
+          <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

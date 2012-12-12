@@ -2,7 +2,8 @@ class EventsController < ApplicationController
   before_filter :authorize_organizer, except: [:index, :show]
 
   def index
-    @events = Event.order("date")
+    @events_upcoming = Event.upcoming()
+    @events_past = Event.past()
   end
 
   def show

@@ -21,4 +21,15 @@ class Event < ActiveRecord::Base
   validates :name, presence: true, length: { minimum: 2, maximum: 100 }
   validates :user_id, presence: true
   validates :date, presence: true
+
+  default_scope { order(:date) }
+  scope :upcoming, lambda {
+    where(
+      "\"date\" >= ?", Date.today)
+  }
+
+  scope :past, lambda {
+    where(
+      "\"date\" < ?", Date.today)
+  }
 end

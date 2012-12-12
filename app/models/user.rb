@@ -131,7 +131,7 @@ class User < ActiveRecord::Base
       end
     end
 
-    default_scope order(:last_name, :first_name)
+    default_scope { order(:last_name, :first_name) }
     scope :event_participants, lambda { |event|
 	  where(
         "id IN (SELECT user_id FROM timeslots " +
