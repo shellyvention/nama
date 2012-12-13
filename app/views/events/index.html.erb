@@ -38,6 +38,15 @@
 <h4>Past Events</h4>
 <div class="resource">
   <table class="table table-hover">
+  <% if @events_past.none? %>
+    <tbody>
+      <tr>
+        <td>
+          <em>There are no past events so far...</em>
+        </td>
+      </tr>
+    </tbody>
+  <% else %>
     <thead>
       <tr>
         <th>Name</th>
@@ -64,5 +73,6 @@
         </tr>
       <% end %>
     </tbody>
+  <% end %>
   </table>
 </div>
