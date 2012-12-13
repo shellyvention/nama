@@ -40,6 +40,6 @@ class RatingsController < ApplicationController
         end
       end
     end
-    redirect_to @event
+    redirect_to events_url
   end
 end

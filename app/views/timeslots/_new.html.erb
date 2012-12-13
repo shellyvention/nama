@@ -1,36 +1,20 @@
+<h5>New Timeslot</h5>
 <%= form_for [@event, Timeslot.new], :html => { :class => 'form-horizontal' }, :remote => true do |f| %>
-<table class="table">
-  <thead>
-    <tr>
-      <th colspan="5"><strong>New Timeslot</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <%= f.label :start %>
-      </td>
-      <td>
-        <%= f.text_field :start, :class => 'timepicker-default input-small' %>
-        <span class="add-on">
-          <i class="icon-time"></i>
-        </span>
-      </td>
-      <td>
-        <%= f.label :finish %>
-      </td>
-      <td>
-        <%= f.text_field :finish, :class => 'timepicker-default input-small' %>
-        <span class="add-on">
-          <i class="icon-time"></i>
-        </span>
-      </td>
-      <td>
-        <%= f.submit "Create", :class => 'btn btn-primary btn-small', :remote => true %>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <div style="float:left;">
+    <%= f.label :start %>
+    <%= f.text_field :start, :class => 'timepicker-default input-mini' %>
+      <span class="add-on" style="margin-left: 2px; margin-right: 5px;">
+        <i class="icon-time"></i>
+      </span>
+  </div>
+  <div style="float:left;">
+    <%= f.label :finish %>
+    <%= f.text_field :finish, :class => 'timepicker-default input-mini' %>
+      <span class="add-on" style="margin-left: 2px; margin-right: 2px;">
+        <i class="icon-time"></i>
+      </span>
+    <%= f.submit "Create", :class => 'btn btn-primary btn-small', :remote => true %>
+  </div>
 <% end %>
 
 <script type="text/javascript">

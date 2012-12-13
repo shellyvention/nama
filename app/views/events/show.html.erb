@@ -1,39 +1,24 @@
-<h3><%= @event.name %>, <%= @event.date %></h3>
-<div class="resource">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Description</th>
-        <th>Owner</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          <%= @event.description.gsub(/\n/, '<br>').html_safe %>
-        </td>
-        <td><%= @event.user.full_name %></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div style="width: 40%;">
-    <% if User.current.is_organizer? %>
-      <%= render :partial => "timeslots/new" %>
-    <% end %>
+<div class="row">
+  <%= render :partial => "event_info" %>
+  <div class="resource-content style="position:relative;">
+    <div style="float: left; margin-right: 42px; margin-bottom: 20px;">
+      <% if User.current.is_organizer? %>
+        <%= render :partial => "timeslots/new" %>
+      <% end %>
+    </div>
+    <div id="timeslot-div" style="float: left;">
+      <%= render :partial => "timeslots/index", :locals => { :timeslots => @event.timeslots } %>
+    </div>
+    <div style="clear: both;">
+      <%= link_to ll('.back'), events_path, :class => 'btn btn-small'  %>
+        <% if User.current.is_organizer? %>
+          <%= link_to ll('.edit'), edit_event_path(@event), :class => 'btn btn-small' %>
+          <%= link_to ll('.destroy'), event_path(@event), :method => 'delete',
+                :data => { :confirm => ll('.confirm'), :default => 'Are you sure?' },
+                :class => 'btn btn-danger btn-small' %>
+          <%= link_to ll('.rate_event'), show_event_rating_path(@event),
+                :class => 'btn btn-small', :style => 'float: right;' %>
+        <% end %>
+    </div>
   </div>
-
-  <div id="timeslot-div" style="width: 40%;">
-    <%= render :partial => "timeslots/index", :locals => { :timeslots => @event.timeslots } %>
-  </div>
-
-  <%= link_to ll('.back'), events_path, :class => 'btn btn-small'  %>
-
-  <% if User.current.is_organizer? %>
-    <%= link_to ll('.edit'), edit_event_path(@event), :class => 'btn btn-small' %>
-    <%= link_to ll('.destroy'), event_path(@event), :method => 'delete',
-          :data => { :confirm => ll('.confirm'), :default => 'Are you sure?' },
-          :class => 'btn btn-danger btn-small' %>
-    <%= link_to ll('.rate_event'), show_event_rating_path(@event), :class => 'btn btn-small', :style => 'float: right;' %>
-  <% end %>
 </div>

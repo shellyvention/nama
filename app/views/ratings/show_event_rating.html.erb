@@ -1,53 +1,50 @@
-<h3>Rate Event</h3>
-<div class="resource">
-  <table class="table">
-    <thead>
-      <tr>
-        <th><strong>Name</strong></th>
-        <th><strong>Description</strong></th>
-        <th><strong>Owner</strong></th>
-        <th><strong>Date</strong></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= @event.name %></td>
-        <td>
-          <%= @event.description.gsub(/\n/, '<br>').html_safe %>
-        </td>
-        <td><%= @event.user.full_name %></td>
-        <td><%= @event.date %></td>
-      </tr>
-    </tbody>
-  </table>
-  <br/>
-  <h4>Rate Event Participants</h4>
-  <%= form_tag(update_event_rating_path(@event.id), :method => :put) do %>
-    <table class="table">
-      <tbody>
-        <% @users.each do |user| %>
-          <tr>
-            <td style="width: 35%; vertical-align: middle;">
-              <%= user.full_name %>
-            </td>
-            <td style="width: 20%; vertical-align: middle;">
-              <%= image_tag "rating_small.png" %>
-              <%= select_tag "rating[#{user.id}][stars]",
-                    options_for_select(1..@ratings[user.id].stars_max,
-				    @ratings[user.id].stars), :class => 'input-mini' %>
-                    ( Maximum: <%= @ratings[user.id].stars_max %> )
-            </td>
-            <td style="width: 20%; vertical-align: middle;">
-              <%= image_tag "rating_small.png" %>
-              <%= image_tag "rating_small.png" %>
-              <%= text_field_tag "rating[#{user.id}][stars_extra]",
-			        @ratings[user.id].stars_extra, :class => 'input-mini' %>
-            </td>
-          </tr>
+<div class="row">
+  <%= render :partial => "events/event_info" %>
+  <div class="resource-content" style="position:relative;">
+    <h4>Rate Event Participants</h4>
+    <%= form_tag(update_event_rating_path(@event.id), :method => :put) do %>
+      <% if @ratings.empty? %>
+        <table class="table no-content">
+          <tbody>
+            <tr>
+              <td>
+                <em>There are no enrolled users so far...</em>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      <% else %>
+        <table class="table" style="margin-bottom:45px;">
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td style="width: 35%; vertical-align: middle;">
+                  <%= user.full_name %>
+                </td>
+                <td style="width: 20%; vertical-align: middle;">
+                  <%= image_tag "rating_small.png" %>
+                  <%= select_tag "rating[#{user.id}][stars]",
+                        options_for_select(1..@ratings[user.id].stars_max,
+                      @ratings[user.id].stars), :class => 'input-mini' %>
+                        ( Maximum: <%= @ratings[user.id].stars_max %> )
+                </td>
+                <td style="width: 20%; vertical-align: middle;">
+                  <%= image_tag "rating_small.png" %>
+                  <%= image_tag "rating_small.png" %>
+                  <%= text_field_tag "rating[#{user.id}][stars_extra]",
+                        @ratings[user.id].stars_extra, :class => 'input-mini' %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+      <div style="position:absolute; bottom:0; margin-bottom:10px;">
+        <% if !@ratings.empty? %>
+          <%= submit_tag ll('.save'), :class => 'btn btn-primary' %>
         <% end %>
-      </tbody>
-    </table>
-    <%= submit_tag ll('.save'), :class => 'btn btn-primary' %>
-    <%= link_to ll('.cancel'), @event, :class => 'btn' %>
-  <% end %>
+        <%= link_to ll('.cancel'), @event, :class => 'btn' %>
+      </div>
+    <% end %>
+  </div>
 </div>

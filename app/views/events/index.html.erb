@@ -37,42 +37,44 @@
 <br>
 <h4>Past Events</h4>
 <div class="resource">
-  <table class="table table-hover">
   <% if @events_past.none? %>
-    <tbody>
-      <tr>
-        <td>
-          <em>There are no past events so far...</em>
-        </td>
-      </tr>
-    </tbody>
-  <% else %>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Owner</th>
-        <th>Date</th>
-        <th>&nbsp;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @events_past.each do |event| %>
+    <table class="table no-content">
+      <tbody>
         <tr>
-          <td><%= event.name %></td>
           <td>
-            <%= event.description.gsub(/\n/, '<br>').html_safe %>
-          </td>
-          <td><%= event.user.full_name %></td>
-          <td><%= event.date %></td>
-          <td style="text-align: right;">
-          <% if User.current.is_organizer? %>
-            <%= link_to ll('.rate_event'), show_event_rating_path(event.id), :class => 'btn btn-mini' %>
-          <% end %>
+            <em>There are no past events so far...</em>
           </td>
         </tr>
-      <% end %>
-    </tbody>
+      </tbody>
+    </table>
+  <% else %>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Owner</th>
+          <th>Date</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @events_past.each do |event| %>
+          <tr>
+            <td><%= event.name %></td>
+            <td>
+              <%= event.description.gsub(/\n/, '<br>').html_safe %>
+            </td>
+            <td><%= event.user.full_name %></td>
+            <td><%= event.date %></td>
+            <td style="text-align: right;">
+            <% if User.current.is_organizer? %>
+              <%= link_to ll('.rate_event'), show_event_rating_path(event.id), :class => 'btn btn-mini' %>
+            <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   <% end %>
-  </table>
 </div>
