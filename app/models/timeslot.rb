@@ -36,4 +36,14 @@ class Timeslot < ActiveRecord::Base
       user_id: user.is_a?(User) ? user.id : user,
       event_id: event.id).count * 3
   end
+
+  def enroll(event, owner, user)
+    self.user = user
+
+    if self.save
+      EventMailer.enrollment_email(event, owner, user).deliver
+    else
+      return false
+    end
+  end
 end

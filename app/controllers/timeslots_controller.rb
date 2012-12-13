@@ -33,9 +33,13 @@ class TimeslotsController < ApplicationController
   def enroll
     timeslot = Timeslot.find(params[:id])
     @event = timeslot.event
-    timeslot.user = User.current
-    timeslot.save
+    event_owner = timeslot.event.user
 
-	render 'refresh'
+    if timeslot && timeslot.enroll(@event, event_owner, User.current)
+	    render 'refresh'
+    else
+      flash[:error] = "Ups! Something went wrong. Please try again later!"
+      redirect_to events_url
+    end
   end
 end
