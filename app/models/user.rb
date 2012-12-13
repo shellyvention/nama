@@ -139,6 +139,21 @@ class User < ActiveRecord::Base
         "WHERE event_id = :event_id)", event_id: event.id)
     }
 
+    scope :num_members, lambda {
+      where(
+        "email != \'nama\'")
+    }
+
+    scope :num_males, lambda {
+      where(
+        "gender == 0")
+    }
+
+    scope :num_females, lambda {
+      where(
+        "gender == 1")
+    }
+
     private
       def create_remember_token
         self.remember_token = SecureRandom.urlsafe_base64
