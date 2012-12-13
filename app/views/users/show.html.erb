@@ -57,7 +57,7 @@
     </tbody>
   </table>
 
-  <% if User.current.is_organizer? %>
+  <% if User.current.is_admin? %>
     <%= link_to ll('.back'), users_path, :class => 'btn btn-small' %>
     <%= link_to ll('.edit'), edit_user_path(@user), :class => 'btn btn-small' %>
     <%= link_to ll('.destroy'), user_path(@user), :method => 'delete',
