@@ -43,4 +43,7 @@ development:
   domain: localhost:3000
 ```
 
-## Copyright and license
+## License
+
+This software is distributed under the GNU General Public License, version 2 - see the
+accompanying COPYING file for more details.
