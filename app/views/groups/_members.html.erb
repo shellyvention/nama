@@ -1,4 +1,4 @@
-<div style="width: 40%;">
+<div style="float: left; margin-right: 100px; margin-bottom: 20px;">
   <table class="table">
     <thead>
       <th colspan="2"><strong>Assigned Members</strong></th>
@@ -18,7 +18,7 @@
   </table>
 </div>
 
-<div style="width: 40%;">
+<div style="float: left;">
   <table class="table">
     <thead>
       <th colspan="2"><strong>New Members</strong></th>
@@ -29,8 +29,8 @@
           <td><%= member.full_name %></td>
           <td style="text-align: right;">
             <%= link_to ll('add'), group_memberships_path(@group, member),
-                    :class => 'btn btn-mini',
-                    :remote => true, :method => :post %>
+                  :class => 'btn btn-mini',
+                  :remote => true, :method => :post %>
           </td>
         </tr>
       <% end %>

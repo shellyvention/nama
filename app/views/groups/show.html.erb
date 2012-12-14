@@ -1,13 +1,19 @@
-<h3>Group <%= @group.name %></h3>
-<div class="resource">
-  <div class="row">
-    <div class="span12" id="member-div">
+<div class="row">
+  <div class="resource-infobox">
+    <h4><%= @group.name %></h4>
+    <em style="margin-left:10px;"><small>No additional information...</small></em>
+  </div>
+
+  <div class="resource-content">
+    <div id="member-div" style="float:left;">
       <%= render :partial => 'members' %>
     </div>
+    <div style="clear: both;">
+      <%= link_to ll('.back'), groups_path, :class => 'btn btn-small' %>
+      <%= link_to ll('.edit'), edit_group_path(@group), :class => 'btn btn-small' %>
+      <%= link_to ll('.destroy'), group_path(@group), :method => 'delete',
+            :data => { :confirm => ll('.confirm'), :default => 'Are you sure?' },
+            :class => 'btn btn-danger btn-small' %>
+    </div>
   </div>
-  <%= link_to ll('.back'), groups_path, :class => 'btn btn-small' %>
-  <%= link_to ll('.edit'), edit_group_path(@group), :class => 'btn btn-small' %>
-  <%= link_to ll('.destroy'), group_path(@group), :method => 'delete',
-        :data => { :confirm => ll('.confirm'), :default => 'Are you sure?' },
-        :class => 'btn btn-danger btn-small' %>
 </div>

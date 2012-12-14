@@ -1,6 +1,6 @@
 <div class="row">
   <%= render :partial => "event_info" %>
-  <div class="resource-content style="position:relative;">
+  <div class="resource-content" style="position:relative;">
     <div style="float: left; margin-right: 42px; margin-bottom: 20px;">
       <% if User.current.is_organizer? %>
         <%= render :partial => "timeslots/new" %>

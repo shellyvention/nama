@@ -27,7 +27,7 @@
             <%= link_to ll('.enroll'), timeslot_enroll_path(@event, timeslot),
                   :remote => true, :method => :post,
                   :data => { :confirm => ll('.confirm_timeslot'), :default => 'Are you sure?' },
-                  :class => 'btn btn-mini' %>
+                  :class => 'btn btn-mini btn-success' %>
           <% elsif timeslot.user %>
             <%= timeslot.user.full_name %>
           <% else %>
