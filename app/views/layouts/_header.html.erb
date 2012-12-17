@@ -12,7 +12,7 @@
       <% end %>
       <div class="nav-collapse collapse">
         <ul class="nav">
-          <li><%= link_to "Help", help_path %></li>
+          <li><%= link_to ll('.label_help'), help_path %></li>
         <% if User.signed_in? %>
           <% if User.current.is_admin? %>
             <li class="dropdown">
@@ -21,17 +21,17 @@
                 <b class="caret"></b>
               </a>
                <ul class="dropdown-menu">
-                 <li><%= link_to "Users", users_path %></li>
-                 <li><%= link_to "Groups", groups_path %></li>
+                 <li><%= link_to ll('.label_users'), users_path %></li>
+                 <li><%= link_to ll('.label_groups'), groups_path %></li>
           <% end %>
-                 <li><%= link_to "Events", events_path %></li>
-                 <li><%= link_to "Ratings", ratings_path %></li>
+                 <li><%= link_to ll('.label_events'), events_path %></li>
+                 <li><%= link_to ll('.label_ratings'), ratings_path %></li>
                </ul>
             </li>
         </ul>
         <ul class="nav pull-right">
           <li><%= link_to User.current.email, User.current %>
-          <li><%= link_to "Sign out", signout_path, method: 'delete' %></li>
+          <li><%= link_to ll('.label_signout'), signout_path, method: 'delete' %></li>
         <% end %>
         </ul>
       </div>

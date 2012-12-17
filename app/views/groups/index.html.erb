@@ -1,9 +1,9 @@
-<h3>Manage Groups</h3>
+<h3><%= ll('.label_group_manage') %></h3>
 <div class="resource">
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Group Name</th>
+        <th><%= ll('.label_group_name') %></th>
         <th>&nbsp;</th>
       </tr>
     </thead>
@@ -12,12 +12,12 @@
         <tr>
           <td><%= link_to group.name, group_path(group) %></td>
           <td style="text-align: right;">
-            <%= link_to ll('.edit'), edit_group_path(group), :class => 'btn btn-mini' %>
-            <%= link_to ll('.view'), group_path(group), :class => 'btn btn-mini' %>
+            <%= link_to ll('.label_edit'), edit_group_path(group), :class => 'btn btn-mini' %>
+            <%= link_to ll('.label_view'), group_path(group), :class => 'btn btn-mini' %>
           </td>
         </tr>
       <% end %>
     </tbody>
   </table>
-  <%= link_to ll('.new'), new_group_path, :class => 'btn btn-primary' %>
+  <%= link_to ll('.label_new'), new_group_path, :class => 'btn btn-primary' %>
 </div>

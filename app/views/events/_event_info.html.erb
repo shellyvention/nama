@@ -1,14 +1,14 @@
 <div class="resource-infobox">
   <h4><%= @event.name %>, <%= @event.date %></h4>
   <dl>
-    <dt>Owner</dt>
+    <dt><%= ll('.label_owner') %></dt>
     <dd><%= @event.user.full_name %></dd>
-    <dt>Description</dt>
+    <dt><%= ll('.label_description') %></dt>
     <% if @event.description? %>
       <dd><%= @event.description.gsub(/\n/, '<br>').html_safe %></dd>
     <% else %>
       <dd>
-        <em><small>No information...</small></em>
+        <em><small><%= ll('.text_no_information') %></small></em>
       </dd>
     <% end %>
   </dl>

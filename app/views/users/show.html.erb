@@ -1,50 +1,50 @@
-<h3>User Information</h3>
+<h3><%= ll('.label_user_information') %></h3>
 <div class="resource">
   <table class="table table-hover">
     <tbody>
       <tr>
-        <td style="width: 20%"><strong>Last Name:</strong></td>
+        <td style="width: 20%"><strong><%= ll('.label_user_last_name') %>:</strong></td>
         <td style="width: 80%"><%= @user.last_name %></td>
       </tr>
       <tr>
-        <td style="width: 20%"><strong>First Name:</strong></td>
+        <td style="width: 20%"><strong><%= ll('.label_user_first_name') %>:</strong></td>
         <td style="width: 80%"><%= @user.first_name %></td>
       </tr>
       <tr>
-        <td style="width: 20%"><strong>Street:</strong></td>
+        <td style="width: 20%"><strong><%= ll('.label_user_street') %>:</strong></td>
         <td style="width: 80%"><%= @user.street %></td>
       </tr>
       <tr>
-        <td style="width: 20%"><strong>Postal Code:</strong></td>
+        <td style="width: 20%"><strong><%= ll('.label_user_postal_code') %>:</strong></td>
         <td style="width: 80%"><%= @user.postal_code %></td>
       </tr>
       <tr>
-        <td style="width: 20%"><strong>City:</strong></td>
+        <td style="width: 20%"><strong><%= ll('.label_user_city') %>:</strong></td>
         <td style="width: 80%"><%= @user.city %></td>
       </tr>
       <tr>
-        <td style="width: 20%"><strong>Phone Landline:</strong></td>
+        <td style="width: 20%"><strong><%= ll('.label_user_phone_landline') %>:</strong></td>
         <td style="width: 80%"><%= @user.phone_landline %></td>
       </tr>
       <tr>
-        <td style="width: 20%"><strong>Phone Mobile:</strong></td>
+        <td style="width: 20%"><strong><%= ll('.label_user_phone_mobile') %>:</strong></td>
         <td style="width: 80%"><%= @user.phone_mobile %></td>
       </tr>
       <tr>
-        <td style="width: 20%"><strong>Date Of Birth:</strong></td>
+        <td style="width: 20%"><strong><%= ll('.label_user_date_of_birth') %>:</strong></td>
         <td style="width: 80%"><%= @user.date_of_birth %></td>
       </tr>
       <tr>
-        <td style="width: 20%"><strong>Email:</strong></td>
+        <td style="width: 20%"><strong><%= ll('.label_user_email') %>:</strong></td>
         <td style="width: 80%"><%= @user.email %></td>
       </tr>
       <% if User.current.is_organizer? %>
         <tr>
-          <td style="width: 20%"><strong>Role:</strong></td>
+          <td style="width: 20%"><strong><%= ll('.label_user_role') %>:</strong></td>
           <td style="width: 80%"><%= @user.role_name %></td>
         </tr>
         <tr>
-          <td style="width: 20%"><strong>Active?</strong></td>
+          <td style="width: 20%"><strong><%= ll('.label_user_active') %>?</strong></td>
           <td style="width: 80%">
           <% if @user.active %>
             <i class="icon-ok"></i>
@@ -58,10 +58,10 @@
   </table>
 
   <% if User.current.is_admin? %>
-    <%= link_to ll('.back'), users_path, :class => 'btn btn-small' %>
-    <%= link_to ll('.edit'), edit_user_path(@user), :class => 'btn btn-small' %>
-    <%= link_to ll('.destroy'), user_path(@user), :method => 'delete',
-          :data => { :confirm => ll('.confirm'), :default => 'Are you sure?' },
+    <%= link_to ll('.label_back'), users_path, :class => 'btn btn-small' %>
+    <%= link_to ll('.label_edit'), edit_user_path(@user), :class => 'btn btn-small' %>
+    <%= link_to ll('.label_destroy'), user_path(@user), :method => 'delete',
+          :data => { :confirm => ll('.message_confirm'), :default => 'Are you sure?' },
           :class => 'btn btn-danger btn-small' %>
   <% end %>
 </div>

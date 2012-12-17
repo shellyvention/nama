@@ -3,7 +3,7 @@
     <tbody>
       <tr>
         <td style="width: 20%;">
-          <%= f.label :name, :class => 'control-label' %>
+          <%= f.label ll('.label_name'), :class => 'control-label' %>
         </td>
         <td>
           <%= f.text_field :name, :class => 'text_field' %>
@@ -11,7 +11,7 @@
       </tr>
       <tr>
         <td style="width: 20%;">
-          <%= f.label :description, :class => 'control-label' %>
+          <%= f.label ll('.label_description'), :class => 'control-label' %>
         </td>
         <td>
           <%= f.text_area :description, :cols => 30, :rows => 4,
@@ -20,7 +20,7 @@
       </tr>
       <tr>
         <td style="width: 20%;">
-          <%= f.label :owner, :class => 'control-label' %>
+          <%= f.label ll('.label_owner'), :class => 'control-label' %>
         </td>
         <td>
 	        <%= f.collection_select(:user_id, User.where('role != 0 AND email != \'nama\''),
@@ -29,7 +29,7 @@
       </tr>
       <tr>
         <td style="width: 20%;">
-          <%= f.label :date, :class => 'control-label' %>
+          <%= f.label ll('.label_date'), :class => 'control-label' %>
         </td>
         <td>
           <%= f.text_field :date, :value => f.object.date, 'data-behaviour' => 'datepicker' %>
@@ -39,7 +39,7 @@
         <td style="width: 20%;">&nbsp;</td>
         <td>
           <%= f.submit nil, :class => 'btn btn-primary' %>
-          <%= link_to ll('.cancel'), events_path, :class => 'btn' %>
+          <%= link_to ll('.label_cancel'), events_path, :class => 'btn' %>
         </td>
       </tr>
     </tbody>

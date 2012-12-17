@@ -1,19 +1,19 @@
-<h5>New Timeslot</h5>
+<h5><%= ll('.label_timeslot_new') %></h5>
 <%= form_for [@event, Timeslot.new], :html => { :class => 'form-horizontal' }, :remote => true do |f| %>
   <div style="float:left;">
-    <%= f.label :start %>
+    <%= f.label ll('.label_timeslot_start') %>
     <%= f.text_field :start, :class => 'timepicker-default input-mini' %>
       <span class="add-on" style="margin-left: 2px; margin-right: 5px;">
         <i class="icon-time"></i>
       </span>
   </div>
   <div style="float:left;">
-    <%= f.label :finish %>
+    <%= f.label ll('.label_timeslot_finish') %>
     <%= f.text_field :finish, :class => 'timepicker-default input-mini' %>
       <span class="add-on" style="margin-left: 2px; margin-right: 2px;">
         <i class="icon-time"></i>
       </span>
-    <%= f.submit "Create", :class => 'btn btn-primary btn-small', :remote => true %>
+    <%= f.submit ll('.label_create'), :class => 'btn btn-primary btn-small', :remote => true %>
   </div>
 <% end %>
 

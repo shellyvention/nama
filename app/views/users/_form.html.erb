@@ -3,7 +3,7 @@
     <tbody>
       <tr>
         <td style="width: 20%;">
-          <%= f.label :gender, :class => 'control-label' %>
+          <%= f.label ll('.label_user_gender'), :class => 'control-label' %>
         </td>
         <td>
           <%= f.select :gender, [['Male', 0], ['Female', 1]], :include_blank => '' %>
@@ -11,7 +11,7 @@
       </tr>
       <tr>
         <td style="width: 20%;">
-          <%= f.label :last_name, :class => 'control-label' %>
+          <%= f.label ll('.label_user_last_name'), :class => 'control-label' %>
         </td>
         <td>
           <%= f.text_field :last_name, :class => 'text_field' %>
@@ -19,7 +19,7 @@
       </tr>
       <tr>
         <td style="width: 20%;">
-          <%= f.label :first_name, :class => 'control-label' %>
+          <%= f.label ll('.label_user_first_name'), :class => 'control-label' %>
         </td>
         <td>
           <%= f.text_field :first_name, :class => 'text_field' %>
@@ -27,7 +27,7 @@
       </tr>
       <tr>
         <td style="width: 20%;">
-          <%= f.label :street, :class => 'control-label' %>
+          <%= f.label ll('.label_user_street'), :class => 'control-label' %>
         </td>
         <td>
           <%= f.text_field :street, :class => 'text_field' %>
@@ -35,7 +35,7 @@
       </tr>
       <tr>
         <td style="width: 20%;">
-          <%= f.label :postal_code, :class => 'control-label' %>
+          <%= f.label ll('.label_user_postal_code'), :class => 'control-label' %>
         </td>
         <td>
           <%= f.number_field :postal_code, :class => 'number_field' %>
@@ -43,7 +43,7 @@
       </tr>
       <tr>
         <td style="width: 20%;">
-          <%= f.label :city, :class => 'control-label' %>
+          <%= f.label ll('.label_user_city'), :class => 'control-label' %>
         </td>
         <td>
           <%= f.text_field :city, :class => 'text_field' %>
@@ -51,7 +51,7 @@
       </tr>
       <tr>
         <td style="width: 20%;">
-          <%= f.label :phone_landline, :class => 'control-label' %>
+          <%= f.label ll('.label_user_phone_landline'), :class => 'control-label' %>
         </td>
         <td>
           <%= f.text_field :phone_landline, :class => 'text_field' %>
@@ -59,7 +59,7 @@
       </tr>
       <tr>
         <td style="width: 20%;">
-          <%= f.label :phone_mobile, :class => 'control-label' %>
+          <%= f.label ll('.label_user_phone_mobile'), :class => 'control-label' %>
         </td>
         <td>
           <%= f.text_field :phone_mobile, :class => 'text_field' %>
@@ -67,7 +67,7 @@
       </tr>
       <tr>
         <td style="width: 20%;">
-          <%= f.label :date_of_birth, :class => 'control-label' %>
+          <%= f.label ll('.label_user_date_of_birth'), :class => 'control-label' %>
         </td>
         <td>
           <%= f.text_field :date_of_birth, :value => f.object.date_of_birth, 'data-behaviour' => 'datepicker' %>
@@ -75,7 +75,7 @@
       </tr>
       <tr>
         <td style="width: 20%;">
-          <%= f.label :email, :class => 'control-label' %>
+          <%= f.label ll('.label_user_email'), :class => 'control-label' %>
         </td>
         <td>
           <%= f.text_field :email, :class => 'text_field' %>
@@ -83,7 +83,7 @@
       </tr>
       <tr>
         <td style="width: 20%;">
-          <%= f.label :role, :class => 'control-label' %>
+          <%= f.label ll('.label_user_role'), :class => 'control-label' %>
         </td>
         <td>
           <%= f.select :role, [['User', 0], ['Admin', 1], ['Organizer', 2]], :include_blank => '' %>
@@ -91,7 +91,7 @@
       </tr>
       <tr>
         <td style="width: 20%;">
-          <%= f.label :active, :class => 'control-label' %>
+          <%= f.label ll('.label_user_active'), :class => 'control-label' %>
         </td>
         <td>
           <%= f.check_box :active %>
@@ -101,7 +101,7 @@
         <td style="width: 20%;">&nbsp;</td>
         <td>
           <%= f.submit nil, :class => 'btn btn-primary' %>
-          <%= link_to ll('.cancel'), users_path, :class => 'btn' %>
+          <%= link_to ll('.label_cancel'), users_path, :class => 'btn' %>
         </td>
       </tr>
     </tbody>

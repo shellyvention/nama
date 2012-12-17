@@ -1,10 +1,10 @@
 <table class="table timeslots">
   <thead>
     <tr>
-      <th>Start</th>
-      <th>Finish</th>
+      <th><%= ll('.label_timeslot_start') %></th>
+      <th><%= ll('.label_timeslot_finish') %></th>
       <th>&nbsp;</th>
-      <th>Enrolled User</th>
+      <th><%= ll('.label_timeslot_user_enrolled') %></th>
     </tr>
   </thead>
   <tbody>
@@ -14,24 +14,26 @@
         <td><%= timeslot.finish %></td>
         <td>
           <% if User.current.is_organizer? %>
-            <%= link_to ll('.remove'), event_timeslot_path(@event, timeslot),
+            <%= link_to ll('.label_remove'), event_timeslot_path(@event, timeslot),
                   :remote => true, :method => :delete,
                   :class => 'btn btn-mini btn-danger' %>
-            <%= link_to ll('.duplicate'), timeslot_duplicate_path(@event, timeslot),
+            <%= link_to ll('.label_duplicate'), timeslot_duplicate_path(@event, timeslot),
                   :remote => true, :method => :post,
                   :class => 'btn btn-mini' %>
           <% end %>
         </td>
         <td>
           <% if timeslot.can_enroll? %>
-            <%= link_to ll('.enroll'), timeslot_enroll_path(@event, timeslot),
+            <%= link_to ll('.label_enroll'), timeslot_enroll_path(@event, timeslot),
                   :remote => true, :method => :post,
-                  :data => { :confirm => ll('.confirm_timeslot'), :default => 'Are you sure?' },
+                  :data => { :confirm => ll('.message_confirm_timeslot'), :default => 'Are you sure?' },
                   :class => 'btn btn-mini btn-success' %>
           <% elsif timeslot.user %>
             <%= timeslot.user.full_name %>
           <% else %>
-            Cannot enroll
+            <span class="add-on">
+              <i class="icon-ban-circle"> <%= ll('.text_timeslot_not_enroll') %></i>
+            </span>
           <% end %>
         </td>
       </tr>

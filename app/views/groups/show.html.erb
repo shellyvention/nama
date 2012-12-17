@@ -9,10 +9,10 @@
       <%= render :partial => 'members' %>
     </div>
     <div style="clear: both;">
-      <%= link_to ll('.back'), groups_path, :class => 'btn btn-small' %>
-      <%= link_to ll('.edit'), edit_group_path(@group), :class => 'btn btn-small' %>
-      <%= link_to ll('.destroy'), group_path(@group), :method => 'delete',
-            :data => { :confirm => ll('.confirm'), :default => 'Are you sure?' },
+      <%= link_to ll('.label_back'), groups_path, :class => 'btn btn-small' %>
+      <%= link_to ll('.label_edit'), edit_group_path(@group), :class => 'btn btn-small' %>
+      <%= link_to ll('.label_destroy'), group_path(@group), :method => 'delete',
+            :data => { :confirm => ll('.message_confirm'), :default => 'Are you sure?' },
             :class => 'btn btn-danger btn-small' %>
     </div>
   </div>

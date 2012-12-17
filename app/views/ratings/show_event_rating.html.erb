@@ -1,14 +1,14 @@
 <div class="row">
   <%= render :partial => "events/event_info" %>
   <div class="resource-content" style="position:relative;">
-    <h4>Rate Event Participants</h4>
+    <h4><%= ll('.label_rating_event_participants') %></h4>
     <%= form_tag(update_event_rating_path(@event.id), :method => :put) do %>
       <% if @ratings.empty? %>
         <table class="table no-content">
           <tbody>
             <tr>
               <td>
-                <em>There are no enrolled users so far...</em>
+                <em><%= ll('.text_rating_no_users_enrolled') %></em>
               </td>
             </tr>
           </tbody>
@@ -26,7 +26,7 @@
                   <%= select_tag "rating[#{user.id}][stars]",
                         options_for_select(1..@ratings[user.id].stars_max,
                       @ratings[user.id].stars), :class => 'input-mini' %>
-                        ( Maximum: <%= @ratings[user.id].stars_max %> )
+                        ( <%= ll('.label_maximum') %>: <%= @ratings[user.id].stars_max %> )
                 </td>
                 <td style="width: 20%; vertical-align: middle;">
                   <%= image_tag "rating_small.png" %>
@@ -41,9 +41,9 @@
       <% end %>
       <div style="position:absolute; bottom:0; margin-bottom:10px;">
         <% if !@ratings.empty? %>
-          <%= submit_tag ll('.save'), :class => 'btn btn-primary' %>
+          <%= submit_tag ll('.label_save'), :class => 'btn btn-primary' %>
         <% end %>
-        <%= link_to ll('.cancel'), @event, :class => 'btn' %>
+        <%= link_to ll('.label_cancel'), @event, :class => 'btn' %>
       </div>
     <% end %>
   </div>

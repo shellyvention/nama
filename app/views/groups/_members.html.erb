@@ -1,14 +1,14 @@
 <div style="float: left; margin-right: 100px; margin-bottom: 20px;">
   <table class="table">
     <thead>
-      <th colspan="2"><strong>Assigned Members</strong></th>
+      <th colspan="2"><strong><%= ll('.label_group_members_assigned') %></strong></th>
     </thead>
     <tbody>
       <% @group.users.each do |member| %>
         <tr>
           <td><%= member.full_name %></td>
           <td style="text-align: right;">
-            <%= link_to ll('remove'), group_memberships_path(@group, member),
+            <%= link_to ll('.label_remove'), group_memberships_path(@group, member),
                   :class => 'btn btn-mini btn-danger',
                   :remote => true, :method => :delete %>
           </td>
@@ -21,14 +21,14 @@
 <div style="float: left;">
   <table class="table">
     <thead>
-      <th colspan="2"><strong>New Members</strong></th>
+      <th colspan="2"><strong><%= ll('.label_group_members_new') %></strong></th>
     </thead>
     <tbody>
       <% @non_members.each do |member| %>
         <tr>
           <td><%= member.full_name %></td>
           <td style="text-align: right;">
-            <%= link_to ll('add'), group_memberships_path(@group, member),
+            <%= link_to ll('.label_add'), group_memberships_path(@group, member),
                   :class => 'btn btn-mini',
                   :remote => true, :method => :post %>
           </td>

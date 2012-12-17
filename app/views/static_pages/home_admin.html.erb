@@ -1,41 +1,41 @@
 <div class="hero-unit">
-  <h2>Welcome <%= User.current.full_name %></h2>
-  <p>This is the admin page for NaMa where changes to users, groups, events or ratings can be made.</p>
+  <h2><%= ll('.label_home_welcome') %> <%= User.current.full_name %></h2>
+  <p><%= ll('.text_admin_home_message') %></p>
 </div>
 <div class="row">
   <div class="span-one-third appRect">
     <%= link_to image_tag("user.png"), users_path %>
-    <h4>Users</h4>
+    <h4><%= ll('.label_users') %></h4>
   </div>
   <div class="span-one-third appRect">
     <%= link_to image_tag("group.png"), groups_path %>
-    <h4>Groups</h4>
+    <h4><%= ll('.label_groups') %></h4>
   </div>
   <div class="span-one-third appRect">
     <%= link_to image_tag("event.png"), events_path %>
-    <h4>Events</h4>
+    <h4><%= ll('.label_events') %></h4>
   </div>
   <div class="span-one-third appRect">
     <%= link_to image_tag("rating.png"), ratings_path %>
-    <h4>Ratings</h4>
+    <h4><%= ll('.label_ratings') %></h4>
   </div>
 </div>
 <br>
 
 <h4>
   <%= image_tag "info_small.png" %>
-  General Information
+  <%= ll('.label_admin_home_general_info') %>
 </h4>
 <div class="resource">
   <table class="table">
     <thead>
       <tr>
-        <th># Members</th>
-        <th># Groups</th>
-        <th># Males</th>
-        <th># Females</th>
-        <th># Upcoming Events</th>
-        <th># Past Events</th>
+        <th># <%= ll('.label_user_members') %></th>
+        <th># <%= ll('.label_groups') %></th>
+        <th># <%= ll('.label_user_males') %></th>
+        <th># <%= ll('.label_user_females') %></th>
+        <th># <%= ll('.label_events_upcoming') %></th>
+        <th># <%= ll('.label_events_past') %></th>
       </tr>
     </thead>
     <tbody>

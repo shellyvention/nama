@@ -1,20 +1,91 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
+# English strings for Rails i18n
 en:
-  hello: "Hello world"
+  # General
+  label_back: Back
+  label_cancel: Cancel
+  label_new: New
+  label_edit: Edit
+  label_destroy: Destroy
+  label_add: Add
+  label_remove: Remove
+  label_duplicate: Duplicate
+  label_enroll: Enroll
+  label_rate_event: Rate Event
+  label_save: Save
+  label_view: View
+  label_create: Create
 
-  back:             Back
-  cancel:           Cancel
-  new:              New
-  edit:             Edit
-  destroy:          Destroy
-  add:              Add
-  remove:           Remove
-  confirm:          Are you sure?
-  confirm_timeslot: You are about to enroll for this Timeslot. Are you sure?
-  duplicate:        Duplicate
-  enroll:           Enroll
-  rate_event:       Rate Event
-  save:             Save
-  view:             View
+  label_help: Help
+  label_support: Support
+  label_signin: Sign in
+  label_signout: Sign out
+
+  label_name: Name
+  label_description: Description
+  label_owner: Owner
+  label_date: Date
+  label_maximum: Maximum
+  label_extra: Extra
+
+  message_confirm: Are you sure?
+  message_confirm_timeslot: You are about to enroll for this Timeslot. Are you sure?
+
+  text_no_information: No information...
+
+  # Welcome page admin/user
+  label_home_welcome: Welcome
+  label_admin_home_general_info: General Information
+  text_admin_home_message: This is the admin page for NaMa where changes to users, groups, events or ratings can be made.
+  text_user_home_message: This is the user page for NaMa where you can enroll for events and see all ratings.
+
+  # Users
+  label_users: Users
+  label_user: User
+  label_user_members: Members
+  label_user_males: Males
+  label_user_females: Females
+  label_user_manage: Manage Users
+  label_user_information: User Information
+  label_user_information_edit: Edit User Information
+  label_user_new: New User
+  label_user_gender: Gender
+  label_user_last_name: Last Name
+  label_user_first_name: First Name
+  label_user_street: Street
+  label_user_postal_code: Postal Code
+  label_user_city: City
+  label_user_phone_landline: Phone Landline
+  label_user_phone_mobile: Phone Mobile
+  label_user_date_of_birth: Date Of Birth
+  label_user_email: Email
+  label_user_role: Role
+  label_user_active: Active
+
+  # Groups
+  label_groups: Groups
+  label_group_manage: Manage Groups
+  label_group_information:
+  label_group_edit: Edit Group
+  label_group_new: New Group
+  label_group_name: Group Name
+  label_group_members_assigned: Assigned Members
+  label_group_members_new: New Members
+
+  # Events
+  label_events: Events
+  label_events_upcoming: Upcoming Events
+  label_events_past: Past Events
+  label_event_information_edit: Edit Event Information
+  label_event_new: New Event
+
+  # Timeslots
+  label_timeslot_new: New Timeslot
+  label_timeslot_start: Start
+  label_timeslot_finish: Finish
+  label_timeslot_user_enrolled: Enrolled User
+  text_timeslot_not_enroll: Not possible to enroll...
+
+  # Ratings
+  label_ratings: Ratings
+  label_rating_event_participants: Rate Event Participants
+  text_rating_no_users_enrolled: There are no enrolled users so far...
