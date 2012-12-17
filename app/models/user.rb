@@ -117,6 +117,7 @@ class User < ActiveRecord::Base
 
       if self.save
         UserMailer.activation_email(self).deliver
+		return true
       else
         return false
       end
