@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe GroupsController do
+  before do
+    User.current = FactoryGirl.create(:admin)
+  end
 
   describe "create" do
     let(:group) { mock_model(Group).as_null_object }

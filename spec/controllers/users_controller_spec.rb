@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe UsersController do
+  before do
+    User.current = FactoryGirl.create(:admin)
+  end
 
   describe "create" do
     let(:user) { mock_model(User).as_null_object }

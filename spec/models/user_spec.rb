@@ -34,6 +34,10 @@ describe User do
 			postal_code: "1000",
 			city: "Musterstadt",
 			date_of_birth: "1970-01-01",
+			gender: 0,
+			role: 0,
+			password: "ThePassword-1",
+			password_confirmation: "ThePassword-1",
 			email: "peter.muster@muster.ch")
 	end
 
@@ -47,6 +51,8 @@ describe User do
 	it { should respond_to(:date_of_birth) }
 	it { should respond_to(:phone_landline) }
 	it { should respond_to(:phone_mobile) }
+	it { should respond_to(:gender) }
+	it { should respond_to(:role) }
 
 	it { should be_valid }
 
