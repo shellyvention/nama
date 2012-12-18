@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe UsersController do
+
   before do
     User.current = FactoryGirl.create(:admin)
   end
@@ -106,6 +107,12 @@ describe UsersController do
     end
 
     context "when the user updates successfully" do
+      it "sets activation token to nil" do
+        post :update, id: user, user: { active: true }
+        assigns(:user).should eq(user)
+        assigns(:user).activation_token.should eq(nil)
+      end
+
       it "sets a flash[:success] message" do
         post :update, id: user
         flash[:success].should eq("User was successfully updated.")
@@ -134,7 +141,10 @@ describe UsersController do
   end
 
   describe "destroy" do
-    let(:user) { FactoryGirl.create(:user) }
+      let(:user) { FactoryGirl.create(:user) }
+      let(:organizer) { FactoryGirl.create(:organizer) }
+      let(:event) { FactoryGirl.build(:event) }
+
 
     it "deletes the user" do
       User.stub(:find).with(user.id.to_s).and_return(user)
@@ -146,6 +156,62 @@ describe UsersController do
     it "redirects to the Users index" do
       delete :destroy, id: user
       response.should redirect_to(users_url)
+    end
+
+    context "when the user fails to delete" do
+      before do
+        event.user = organizer
+        event.save
+      end
+      it "cannot delete user" do
+        delete :destroy, id: organizer
+        flash[:error].should eq("Cannot delete user: User still owns events.")
+        response.should render_template("show")
+      end
+    end
+  end
+
+  describe "create activation" do
+    let(:user) { FactoryGirl.create(:user) }
+
+    it "located the requested @user, password missing" do
+      post :create_activation, email: user.email
+      assigns(:user).should eq(user)
+      response.should render_template("static_pages/signup")
+    end
+
+    it "located the requested @user, signup works" do
+      post :create_activation, email: user.email, password: "Password-1", password_confirmation: "Password-1"
+      assigns(:user).should eq(user)
+      response.should redirect_to(signin_path)
+    end
+
+    it "cannot find a non-existing user" do
+      post :create_activation, email: "no@email.com"
+      assigns(:user).should eq(nil)
+      response.should render_template("static_pages/signup")
+    end
+  end
+
+  describe "activate user" do
+    let(:user) { FactoryGirl.create(:user) }
+
+    it "located the requested @user, token not right" do
+      get :activate_user, user_id: user.id, activation_token: "No-Right-Token"
+      assigns(:user).should eq(user)
+      response.should render_template("activation_failure")
+    end
+
+    context "when the activation token is set" do
+      before do
+        user.activation_token = "Right-Token"
+        user.save
+      end
+      it "located the requested @user, right token" do
+        get :activate_user, user_id: user.id, activation_token: "Right-Token"
+        assigns(:user).should eq(user)
+        response.should redirect_to(root_url)
+      end
     end
   end
 end

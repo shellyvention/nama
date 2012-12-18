@@ -33,13 +33,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update_attributes(params[:user])
-      if !@user.active
-        @user.activation_token = "locked"
-        @user.save
-      else
+      if @user.active
         @user.activation_token = nil
-        @user.save
+      else
+        @user.activation_token = "locked"
       end
+      @user.save
       flash[:success] = "User was successfully updated."
       redirect_to users_url
     else
@@ -65,7 +64,12 @@ class UsersController < ApplicationController
     if @user && @user.signup(params[:password], params[:password_confirmation])
       redirect_to signin_path
     else
-      flash[:error] = "Cannot signup user: User account is disabled."
+      if @user.nil?
+        error = "User not found"
+      else
+        error = @user.errors.messages[:password]? "Passwords do not match" : "User account is disabled."
+      end
+      flash[:error] = error
       render 'static_pages/signup'
     end
   end

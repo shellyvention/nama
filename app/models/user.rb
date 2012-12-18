@@ -107,7 +107,7 @@ class User < ActiveRecord::Base
     end
 
     def signup(pw, pw_confirmation)
-      if self.activation_token == "locked"
+      if self.activation_token == "locked" || pw.nil?
         return false
       end
 

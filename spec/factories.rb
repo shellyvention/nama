@@ -45,7 +45,6 @@ FactoryGirl.define do
   factory :event do
     name        "MyEvent"
     description "MyDescr"
-    organizer
     date        "2012-12-18"
   end
 
