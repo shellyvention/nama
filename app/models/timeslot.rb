@@ -12,7 +12,7 @@
 #
 
 class Timeslot < ActiveRecord::Base
-  attr_accessible :event_id, :start, :finish
+  attr_accessible :event_id, :start, :finish, :user_id
 
   belongs_to :event
   belongs_to :user
@@ -42,6 +42,7 @@ class Timeslot < ActiveRecord::Base
 
     if self.save
       EventMailer.enrollment_email(event, owner, user).deliver
+      return true
     else
       return false
     end
