@@ -48,6 +48,11 @@ FactoryGirl.define do
     date        "2012-12-18"
   end
 
+  factory :timeslot do
+    start   "2000-01-01 08:00:00"
+    finish  "2000-01-01 10:00:00"
+  end
+
   factory :group do
     name "Group 1"
   end

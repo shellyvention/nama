@@ -38,6 +38,10 @@ class Timeslot < ActiveRecord::Base
   end
 
   def enroll(event, owner, user)
+    if user.nil?
+      return false
+    end
+
     self.user = user
 
     if self.save

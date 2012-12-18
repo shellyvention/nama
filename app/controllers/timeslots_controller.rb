@@ -25,6 +25,7 @@ class TimeslotsController < ApplicationController
     timeslot = Timeslot.find(params[:id])
     @event = timeslot.event
 	timeslot = timeslot.dup
+    timeslot.user = nil
     @event.timeslots << timeslot
 
 	render 'refresh'

@@ -155,6 +155,7 @@ describe UsersController do
 
     it "redirects to the Users index" do
       delete :destroy, id: user
+      flash[:success].should eq("User was successfully deleted.")
       response.should redirect_to(users_url)
     end
 
