@@ -14,5 +14,16 @@
 require 'spec_helper'
 
 describe Event do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  let(:organizer) { FactoryGirl.create(:organizer) }
+
+  before do
+    @event = Event.new(
+      name: "MyEvent",
+      description: "MyDescr",
+      user_id: organizer.id,
+      date: "2012-12-18")
+  end
+
+  subject { @event }
 end

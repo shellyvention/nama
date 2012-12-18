@@ -12,5 +12,15 @@
 require 'spec_helper'
 
 describe GroupMember do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  let(:user) { FactoryGirl.create(:user) }
+  let(:group) { FactoryGirl.create(:group) }
+
+  before do
+    @member = GroupMember.new()
+    @member.group = group
+    @member.user = user
+  end
+
+  subject { @member }
 end
