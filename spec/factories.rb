@@ -12,6 +12,7 @@ FactoryGirl.define do
     password		        "ThePassword-1"
     password_confirmation	"ThePassword-1"
     role			        0
+    active			        1
   end
 
   factory :admin, class: User do
@@ -26,6 +27,7 @@ FactoryGirl.define do
     password		        "ThePassword-1"
     password_confirmation	"ThePassword-1"
     role			        1
+    active			        1
   end
 
   factory :organizer, class: User do
@@ -40,7 +42,24 @@ FactoryGirl.define do
     password		        "ThePassword-1"
     password_confirmation	"ThePassword-1"
     role			        2
+    active			        1
   end
+
+  factory :inactive, class: User do
+    last_name		        "Muster"
+    first_name		        "Peter"
+    street			        "Musterstrasse 1"
+    postal_code		        "1111"
+    city			        "Musterstadt"
+    date_of_birth	        { 40.years.ago }
+    gender			        0
+    email			        "peter.locked@muster.ch"
+    password		        "ThePassword-1"
+    password_confirmation	"ThePassword-1"
+    role			        2
+    active			        0
+  end
+
 
   factory :event do
     name        "MyEvent"
