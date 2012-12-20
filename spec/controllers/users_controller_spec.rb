@@ -124,6 +124,14 @@ describe UsersController do
       end
     end
 
+    context "when user is not active" do
+      it "sets activation token to locked" do
+        post :update, id: user, user: { active: false }
+        assigns(:user).should eq(user)
+        assigns(:user).activation_token.should eq("locked")
+      end
+    end
+
     context "when the user fails to update" do
       it "assigns @user" do
         user.stub(:update_attributes).and_return(false)

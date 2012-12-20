@@ -75,4 +75,10 @@ FactoryGirl.define do
   factory :group do
     name "Group 1"
   end
+
+  factory :rating do
+    stars       3
+    stars_max   3
+    stars_extra 2
+  end
 end
