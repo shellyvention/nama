@@ -33,11 +33,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update_attributes(params[:user])
-      if @user.active
-        @user.activation_token = nil
-      else
-        @user.activation_token = "locked"
-      end
       @user.save
       flash[:success] = "User was successfully updated."
       redirect_to users_url

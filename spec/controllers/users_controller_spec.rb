@@ -124,11 +124,27 @@ describe UsersController do
       end
     end
 
-    context "when user is not active" do
+    context "user locking" do
+      before do
+        user.activation_token = nil
+        user.save
+      end
       it "sets activation token to locked" do
-        post :update, id: user, user: { active: false }
+        post :update, id: user, user: { locked: true }
         assigns(:user).should eq(user)
         assigns(:user).activation_token.should eq("locked")
+      end
+    end
+
+    context "user unlocking" do
+      before do
+        user.activation_token = "locked"
+        user.save
+      end
+      it "sets activation token to nil" do
+        post :update, id: user, user: { locked: false }
+        assigns(:user).should eq(user)
+        assigns(:user).activation_token.should eq(nil)
       end
     end
 

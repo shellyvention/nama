@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
     attr_accessible :date_of_birth, :email, :first_name, :last_name,
       :phone_landline, :phone_mobile, :postal_code, :street, :city,
       :password, :password_confirmation, :activation_token, :active,
-      :role, :gender
+      :role, :gender, :locked
 
     has_secure_password
 
@@ -83,6 +83,18 @@ class User < ActiveRecord::Base
       is_admin? || self.role == 2
     end
 
+    def locked=(status)
+      if status == "1" || status == true || status == 1
+        self.activation_token = "locked"
+      elsif locked
+        self.activation_token = nil
+      end
+    end
+
+    def locked
+      activation_token == "locked"
+    end
+
     def full_name
       if !first_name.nil?
         last_name + " " + first_name
@@ -107,7 +119,7 @@ class User < ActiveRecord::Base
     end
 
     def signup(pw, pw_confirmation)
-      if self.activation_token == "locked" || pw.nil?
+      if locked || pw.nil?
         return false
       end
 

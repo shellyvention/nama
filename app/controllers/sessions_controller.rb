@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by_email(params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
-      if user.active
+      if user.active && !user.locked
         sign_in user
         if user.role == 1
           redirect_to home_admin_url

@@ -11,6 +11,7 @@
         <th><%= ll('.label_user_date_of_birth') %></th>
         <th><%= ll('.label_user_email') %></th>
         <th><%= ll('.label_user_active') %>?</th>
+        <th><%= ll('.label_user_locked') %>?</th>
         <th>&nbsp;</th>
       </tr>
     </thead>
@@ -26,6 +27,13 @@
           <td><%= user.email %></td>
           <td>
             <% if user.active %>
+              <i class="icon-ok"></i>
+            <% else %>
+              <i class="icon-remove"></i>
+            <% end %>
+          </td>
+          <td>
+            <% if user.locked %>
               <i class="icon-ok"></i>
             <% else %>
               <i class="icon-remove"></i>

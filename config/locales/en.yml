@@ -60,6 +60,7 @@ en:
   label_user_email: Email
   label_user_role: Role
   label_user_active: Active
+  label_user_locked: Locked
 
   # Groups
   label_groups: Groups

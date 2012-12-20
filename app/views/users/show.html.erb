@@ -53,6 +53,16 @@
           <% end %>
           </td>
         </tr>
+        <tr>
+          <td style="width: 20%"><strong><%= ll('.label_user_locked') %>?</strong></td>
+          <td style="width: 80%">
+          <% if @user.locked %>
+            <i class="icon-ok"></i>
+          <% else %>
+            <i class="icon-remove"></i>
+          <% end %>
+          </td>
+        </tr>
       <% end %>
     </tbody>
   </table>
