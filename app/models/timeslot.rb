@@ -25,7 +25,7 @@ class Timeslot < ActiveRecord::Base
     return false unless user.nil?
 
     list = Timeslot.joins(:event).where(
-      "events.date = :date AND timeslots.user_id = :user_id AND :finish >= start AND finish >= :start",
+      "events.date = :date AND timeslots.user_id = :user_id AND :finish > start AND finish > :start",
       date: event.date, user_id: User.current.id, finish: finish, start: start)
 
     list.empty?

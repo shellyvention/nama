@@ -2,7 +2,7 @@ class RatingsController < ApplicationController
 
   def index
     @ratings = Rating.all
-    @users = User.all
+    @users = User.where('email != \'nama\'')
   end
 
   def show_event_rating
