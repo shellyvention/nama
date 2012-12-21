@@ -64,15 +64,15 @@ class User < ActiveRecord::Base
     validates :password, allow_nil: true, length: { minimum: 6 }
 
     def self.current=(user)
-      @current_user = user
+      Thread.current[:current_user] = user
     end
 
     def self.current
-      @current_user
+      Thread.current[:current_user]
     end
 
     def self.signed_in?
-      !@current_user.nil?
+      !self.current.nil?
     end
 
     def is_admin?
