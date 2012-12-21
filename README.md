@@ -6,7 +6,7 @@ This is the ZHAW semester project developed by Sandra Freihofer.
 
 ## System requirements
 
-* Ruby 1.9.3p194
+* Ruby 1.9.3
 * Rails 3.2.8
 * SQLite3 1.3.6
 
@@ -26,6 +26,34 @@ $ rake db:seed
 * With a web browser access `http://localhost:3000`
 * Sign in as user `nama` with password `default`
 * **Note:** For successful user signup you have to make changes to `config/app_config.yml` for email notifications
+
+### Minimum requirements email setup
+
+```
+development:
+  mail:
+    delivery_method: :file
+    smtp_settings:
+      address:
+      port:
+      user_name:
+      password:
+      authentication:
+      enable_starttls_auto:
+  domain: localhost:3000
+
+test:
+  mail:
+    delivery_method: :test
+    smtp_settings:
+      address:
+      port:
+      user_name:
+      password:
+      authentication:
+      enable_starttls_auto:
+  domain: domain
+```
 
 ### Example Gmail setup
 
