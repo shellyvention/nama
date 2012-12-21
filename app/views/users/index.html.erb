@@ -47,6 +47,10 @@
       <% end %>
     </tbody>
   </table>
-
-  <%= link_to ll('.label_new'), new_user_path, :class => 'btn btn-primary' %>
+  <div style="height:40px;">
+    <div style="float:left;">
+      <%= link_to ll('.label_new'), new_user_path, :class => 'btn btn-primary' %>
+    </div>
+    <%= will_paginate %>
+  </div>
 </div>

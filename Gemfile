@@ -4,6 +4,8 @@ gem 'thin'
 gem 'rails', '3.2.8'
 gem 'sqlite3', '~> 1.3.6'
 gem 'bcrypt-ruby', '~> 3.0.1'
+gem 'will_paginate', '3.0.3'
+gem 'bootstrap-will_paginate', '0.0.9'
 
 group :development do
   gem 'annotate', '~> 2.5.0'
