@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.date_of_birth = Date.today - 20.years
   end
 
   def edit

@@ -32,7 +32,13 @@
           <%= f.label ll('.label_date'), :class => 'control-label' %>
         </td>
         <td>
-          <%= f.text_field :date, :value => f.object.date, 'data-behaviour' => 'datepicker' %>
+          <div class="input-append date" id="dpevent">
+            <%= f.text_field :date, :value => f.object.date, :readonly => 'readonly',
+                :class => 'datepicker-custom' %>
+            <span class="add-on">
+              <i class="icon-th"></i>
+            </span>
+          </div>
         </td>
       </tr>
       <tr>
@@ -60,9 +66,6 @@
         'event[user_id]': {
           required: true
         },
-        'event[date]': {
-          required: true
-        },
       },
 
       highlight: function(label) {
@@ -75,12 +78,13 @@
           .closest('.control-group').addClass('success').removeClass('error');
       }
     });
-  });
 
-  $(document).on("focus", "[data-behaviour~='datepicker']", function(e) {
-    $(this).datepicker(
-    {
+    var startDate = new Date();
+    startDate.setDate(startDate.getDate() - 1);
+
+    $("#dpevent").datepicker( {
       "format": "dd.mm.yyyy",
+      "startDate": startDate,
       "weekStart": 1,
       "autoclose": true
     });

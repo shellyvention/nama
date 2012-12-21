@@ -70,7 +70,13 @@
           <%= f.label ll('.label_user_date_of_birth'), :class => 'control-label' %>
         </td>
         <td>
-          <%= f.text_field :date_of_birth, :value => f.object.date_of_birth, 'data-behaviour' => 'datepicker' %>
+          <div class="input-append date" id="dpbirth">
+            <%= f.text_field :date, :value => f.object.date_of_birth, :readonly => 'readonly',
+                :class => 'datepicker-custom' %>
+            <span class="add-on">
+              <i class="icon-th"></i>
+            </span>
+          </div>
         </td>
       </tr>
       <tr>
@@ -142,9 +148,6 @@
 		  maxlength: 10,
           required: true
         },
-        'user[date_of_birth]': {
-          required: true
-        },
         'user[email]': {
           email: true,
           required: true
@@ -164,13 +167,10 @@
           .closest('.control-group').addClass('success').removeClass('error');
       }
     });
-  });
 
-  $(document).on("focus", "[data-behaviour~='datepicker']", function(e) {
-    $(this).datepicker(
-    {
-	  "startView": "decade",
+    $("#dpbirth").datepicker( {
       "format": "dd.mm.yyyy",
+	  "startView": "decade",
       "weekStart": 1,
       "autoclose": true
     });
