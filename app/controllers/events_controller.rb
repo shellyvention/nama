@@ -2,8 +2,9 @@ class EventsController < ApplicationController
   before_filter :authorize_organizer, except: [:index, :show]
 
   def index
-    @events_upcoming = Event.upcoming()
-    @events_past = Event.past()
+    @events_upcoming = Event.paginate(page: params[:page_upcoming], :per_page => 5).upcoming()
+    @events_past = Event.paginate(page: params[:page_past], :per_page => 5).past()
+    @events_past_count = Event.past().count
   end
 
   def show

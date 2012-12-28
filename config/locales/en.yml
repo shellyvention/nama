@@ -90,3 +90,8 @@ en:
   label_ratings: Ratings
   label_rating_event_participants: Rate Event Participants
   text_rating_no_users_enrolled: There are no enrolled users so far...
+
+  # For using will_paginate
+  will_paginate:
+    previous_label: "&laquo;"
+    next_label: "&raquo;"

@@ -24,7 +24,7 @@
         </td>
         <td>
 	        <%= f.collection_select(:user_id, User.where('role != 0 AND email != \'nama\''),
-                :id, :last_name, :include_blank => '') %>
+                :id, :full_name, :include_blank => '') %>
         </td>
       </tr>
       <tr>

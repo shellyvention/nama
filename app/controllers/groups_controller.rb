@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   before_filter :authorize_admin
 
   def index
-    @groups = Group.all
+    @groups = Group.paginate(page: params[:page], :per_page => 15)
   end
 
   def show

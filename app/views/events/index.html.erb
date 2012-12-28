@@ -29,10 +29,14 @@
       <% end %>
     </tbody>
   </table>
-
-  <% if User.current.is_organizer? %>
-    <%= link_to ll('.label_new'), new_event_path, :class => 'btn btn-primary' %>
-  <% end %>
+  <div style="height:40px;">
+    <div style="float:left; padding-top:5px;">
+      <% if User.current.is_organizer? %>
+        <%= link_to ll('.label_new'), new_event_path, :class => 'btn btn-primary' %>
+      <% end %>
+    </div>
+    <%= will_paginate @events_upcoming, param_name: :page_upcoming %>
+  </div>
 </div>
 <br>
 <h4><%= ll('.label_events_past') %></h4>
@@ -76,5 +80,10 @@
         <% end %>
       </tbody>
     </table>
+    <% if @events_past_count > 5 %>
+      <div style="height: 40px;">
+        <%= will_paginate @events_past, param_name: :page_past %>
+      </div>
+    <% end %>
   <% end %>
 </div>

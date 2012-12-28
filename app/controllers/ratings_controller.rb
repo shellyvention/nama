@@ -2,7 +2,8 @@ class RatingsController < ApplicationController
 
   def index
     @ratings = Rating.all
-    @users = User.where('email != \'nama\'')
+    @users = User.paginate(page: params[:page], :per_page => 15).where('email != \'nama\'')
+    @users_count = User.count
   end
 
   def show_event_rating

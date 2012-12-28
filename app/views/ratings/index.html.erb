@@ -34,4 +34,9 @@
       <% end %>
     </tbody>
   </table>
+  <% if @users_count > 15 %>
+    <div style="height: 40px;">
+      <%= will_paginate @users %>
+    </div>
+  <% end %>
 </div>
